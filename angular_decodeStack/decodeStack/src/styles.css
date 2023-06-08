@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Jost&family=Montserrat&display=swap');
+
+:root {
+  --theme-blue-btn-color:#00308f;
+  --theme-light-black-color:#232629;
+  --theme-light-gray-color:#d9d9d9;
+  --theme-aqua-answers-color:#e1ecf4;
+  --theme-fade-orange-color:rgba(244,128,35,0.4);
+  --default-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  --main-bg-color: #F5F5F5;
+}
+
+*{
+    font-family: 'Jost', 'Montserrat', sans-serif;
+}
+body{
+    background-color:var(--main-bg-color);
+    min-height:100svh;
+    width:100%;
+    margin:0;
+}
+
+app-root{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 100vh;
+    /* border:2px solid red; */
+}
+app-header{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width:100%;
+    flex-direction: row;
+    min-height:60px;
+    justify-content: space-evenly;
+    flex-wrap:wrap;
+    gap:1rem;
+    box-sizing: border-box;
+    padding:0.5rem 0.5rem;
+    box-shadow:var(--default-box-shadow);
+    position: sticky;
+    top:0;
+}
+
+app-footer {
+    display: flex;
+    align-items: center;
+    background-color: var(--theme-light-black-color);
+    width:100%;
+    flex-direction: row;
+    min-height:60px;
+    justify-content: space-around;
+    flex-wrap:wrap;
+    box-sizing: border-box;
+    padding:0.5rem 0.5rem;
+    color:white;
+    gap:1rem;
+    position: sticky;
+    
+    
+    
+}
+
+app-mainpage{
+    flex: 1;
+    min-height: 70vh;
+    
+
+    
+}

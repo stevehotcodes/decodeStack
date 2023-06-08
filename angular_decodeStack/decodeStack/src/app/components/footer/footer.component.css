@@ -1,0 +1,11 @@
+#author a{
+    text-decoration: none;
+    color:white;
+    cursor:pointer;
+}
+.contact-section{
+    display:flex;
+    justify-content: center;
+    gap:1rem;
+    cursor:pointer;
+}

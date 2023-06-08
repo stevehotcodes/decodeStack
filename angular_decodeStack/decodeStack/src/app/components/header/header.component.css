@@ -1,0 +1,47 @@
+#header-actions{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap:2rem;
+    
+}
+
+#logo{
+    font-size: xx-large;
+    font-weight: bolder;
+    color:var(--theme-light-black-color);
+    cursor:pointer
+}
+
+#search-header-form{
+    display: flex;
+    width: max(50%,300px);
+    border-radius: 0.5rem;
+    border: 2px solid gray;
+    box-shadow: var(--default-box-shadow);
+}
+
+#query{
+    flex:1;
+    justify-self: center;
+    height: 2rem;
+    outline: none;
+    border:none;
+
+}
+
+#search-icon{
+    height:2rem;
+    width: 2rem;
+}
+
+.header-btns{
+    background-color:var(--theme-blue-btn-color);
+    color:#fff;
+    box-sizing: border-box;
+    padding:.5rem;
+    border-radius: .5rem;
+    cursor:pointer;
+}
+
+
