@@ -7,6 +7,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { IonicModule } from '@ionic/angular';
 import { Routes,RouterModule } from '@angular/router';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +21,10 @@ import { Routes,RouterModule } from '@angular/router';
     AppRoutingModule,
     HeaderComponent,
     FooterComponent,
+    SignUpComponent,
+    SignInComponent,
     IonicModule.forRoot(),
+    FormsModule
    
    
   ],
