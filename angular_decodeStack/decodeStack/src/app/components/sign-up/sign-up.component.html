@@ -1,0 +1,40 @@
+<form [formGroup]="signupForm" id="form" (ngSubmit)="onSubmit(signupForm)">
+    <h2>Sign up</h2>
+    <div class="inputs">
+        <label for="">Username</label>
+        <input type="text" formControlName="username" placeholder="username">
+        <div *ngIf="signupForm.get('username')!.errors && signupForm.get('username')!.touched">
+            <div *ngIf="signupForm.get('username')?.hasError('required')" [style.color]="textColor "[style.font-size.rem]="fontSize">Username is required</div>
+        </div>
+    </div>
+    <div class="inputs">
+        <label for="">Email</label>
+        <input type="text"  formControlName="email" placeholder="email">
+        <div *ngIf="signupForm.get('email')!.errors && signupForm.get('email')!.touched">
+            <div *ngIf="signupForm.get('email')?.hasError('required')" [style.color]="textColor "[style.font-size.rem]="fontSize">Email is required</div>
+        </div>
+    </div>
+    <div class="inputs">
+        <label for="">Password</label>
+        <input type="text" formControlName="password" placeholder="password" >
+        <div *ngIf="signupForm.get('password')!.errors && signupForm.get('password')!.touched">
+            <div *ngIf="signupForm.get('password')?.hasError('required')" [style.color]="textColor "[style.font-size.rem]="fontSize">Password is required</div>
+        </div>
+    </div>
+
+    <div class="inputs">
+        <label for="">Confirm Password</label>
+        <input type="text" formControlName="confirmPassword" placeholder="confirmPassword">
+        <div *ngIf="signupForm.get('confirmPassword')!.errors && signupForm.get('confirmPassword')!.touched">
+            <div *ngIf="signupForm.get('confirmPassword')?.hasError('required')" [style.color]="textColor" [style.font-size.rem]="fontSize">Password is required</div>
+        </div>
+    </div>
+
+    <div class="inputs">
+        <button type="submit">Submit</button>
+    </div>
+    <div id="form-footer">
+        <div routerLink="/signin"> <span id="signin-member">Already a member?</span> | Sign in</div>
+    </div>
+
+</form>
