@@ -28,7 +28,7 @@ app-root{
     justify-content: space-between;
     width: 100%;
     min-height: 100svh;
-    /* background-color:var(--theme-light-gray-color) */
+
     /* border:2px solid red; */
 }
 app-header{
@@ -76,9 +76,38 @@ app-mainpage{
 
 app-sign-up, app-sign-in{
     flex:1;
-    /* background-color:blue; */
     display:flex;
     align-items: center;
     justify-content: center;
     
 }
+
+app-navigation{
+    display:flex;
+    position: sticky;
+    width: 100%;
+    border-right: 2px solid #fefefe;
+    flex:.2;   
+
+}
+
+app-user-profile{
+        flex:1;
+        display:flex;
+        flex-wrap:wrap;
+}
+    
+@media (max-width:500px){
+        app-navigation{
+            flex-direction: row;
+            flex-wrap:wrap;
+            border-right: none;
+            gap:0;
+            flex-grow: .1;
+        }
+        app-user-profile{
+            flex-direction: column;
+        }
+        
+} 
+    

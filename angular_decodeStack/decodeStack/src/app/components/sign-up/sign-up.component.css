@@ -22,18 +22,19 @@ form{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 600px;
+    width: min(90svw, 600px);
     /* border:2px solid yellow; */
     border-radius: 20px;
-    margin: 2rem;
+    /* margin: 2rem; */
     /* background-color: var(--theme-light-gray-color); */
     box-shadow:var(--default-box-shadow);
-    
+    flex-wrap:wrap;
+
 }
 button{
     box-sizing: border-box;
     margin: 0.7rem auto;
-    width: 20rem;
+    width: min(60svw ,20rem);
     color:white;
     background-color: var(--theme-blue-btn-color);
     padding: .5rem;
