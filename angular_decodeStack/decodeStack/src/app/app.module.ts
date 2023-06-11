@@ -10,6 +10,8 @@ import { Routes,RouterModule } from '@angular/router';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { FormsModule } from '@angular/forms';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { QuestionsComponent } from './components/questions/questions.component';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     SignUpComponent,
     SignInComponent,
+    NavigationComponent,
+    QuestionsComponent,
     IonicModule.forRoot(),
     FormsModule
    

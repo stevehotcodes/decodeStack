@@ -36,7 +36,7 @@
     </div>
   
     <div class="inputs">
-      <label>Email</label>
+      <label>Password</label>
       <input type="password" formControlName="password" placeholder="password" >
       <div *ngIf="signinForm.get('password')!.errors && (signinForm.get('password')!.dirty || signinForm.get('password')!.touched)">
         <div *ngIf="signinForm.get('password')!.errors" [style.color]="textColor"[style.font-size.rem]="fontSize">password is required</div>
@@ -46,7 +46,7 @@
 
   
     <div>
-      <button type="submit" >Submit</button>
+      <button type="submit">Submit</button>
     </div>
     <div id="form-footer">
         <div routerLink=""> <span id="forgot-password">Forgot Password?</span> </div>
