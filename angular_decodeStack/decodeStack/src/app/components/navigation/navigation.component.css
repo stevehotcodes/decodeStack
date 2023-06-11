@@ -4,7 +4,7 @@
     gap:1rem;
     background-color: #fff;
     box-shadow: var(--default-box-shadow);
-    width: 100%;
+    width:min(100svw ,100%);
     /* min-height: 100svh; */
     overflow: none;
     /* border: 2px solid red; */
@@ -21,8 +21,8 @@
 }
 .side-navigation-bar div{
     cursor:pointer;
-    width: 100%;
-    padding-left: 1rem;
+    width:min(100svw ,90%);
+    padding-left: .7rem;
     box-sizing: border-box;
     /* border:2px solid red; */
 }
@@ -42,10 +42,10 @@
     .side-navigation-bar{
         flex-direction: row;
         /* display: none; */
-        /* width: 100%; */
+        width: 100%;
         height: auto;
         justify-content: space-around;
-        gap: .1rem;
+        /* gap: .1rem; */
         
     }
 }

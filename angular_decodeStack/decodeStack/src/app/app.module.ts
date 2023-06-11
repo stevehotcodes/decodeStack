@@ -11,6 +11,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { FormsModule } from '@angular/forms';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { QuestionsComponent } from './components/questions/questions.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     SignUpComponent,
     SignInComponent,
     NavigationComponent,
+    QuestionsComponent,
     IonicModule.forRoot(),
     FormsModule
    

@@ -29,7 +29,6 @@ app-root{
     width: 100%;
     min-height: 100svh;
 
-    /* border:2px solid red; */
 }
 app-header{
     display: flex;
@@ -85,13 +84,13 @@ app-sign-up, app-sign-in{
 app-navigation{
     display:flex;
     position: sticky;
-    width: 100%;
+    /* width: 100%; */
     border-right: 2px solid #fefefe;
     flex:.2;   
 
 }
 
-app-user-profile{
+app-user-profile,app-questions{
         flex:1;
         display:flex;
         flex-wrap:wrap;
@@ -104,10 +103,14 @@ app-user-profile{
             border-right: none;
             gap:0;
             flex-grow: .1;
+            width: min(100svw,500px);
         }
-        app-user-profile{
+        app-user-profile,app-questions{
             flex-direction: column;
+            flex-grow:1
         }
+        
+        
         
 } 
     
