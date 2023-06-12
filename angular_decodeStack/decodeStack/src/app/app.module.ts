@@ -14,6 +14,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { QuestionsComponent } from './components/questions/questions.component';
 import { AskAPublicQuestionComponent } from './components/ask-a-public-question/ask-a-public-question.component';
 import { PostAnswerComponent } from './components/post-answer/post-answer.component';
+import { TagsComponent } from './components/tags/tags.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { PostAnswerComponent } from './components/post-answer/post-answer.compon
     QuestionsComponent,
     AskAPublicQuestionComponent,
     PostAnswerComponent,
+    TagsComponent,
     IonicModule.forRoot(),
     FormsModule
    
