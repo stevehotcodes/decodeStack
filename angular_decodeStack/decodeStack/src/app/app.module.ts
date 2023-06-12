@@ -12,6 +12,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { FormsModule } from '@angular/forms';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { QuestionsComponent } from './components/questions/questions.component';
+import { AskAPublicQuestionComponent } from './components/ask-a-public-question/ask-a-public-question.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { QuestionsComponent } from './components/questions/questions.component';
     SignInComponent,
     NavigationComponent,
     QuestionsComponent,
+    AskAPublicQuestionComponent,
     IonicModule.forRoot(),
     FormsModule
    
