@@ -5,12 +5,12 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-tags',
+  selector: 'app-users-list',
   standalone: true,
   imports: [CommonModule,NavigationComponent,IonicModule,RouterModule],
-  templateUrl: './tags.component.html',
-  styleUrls: ['./tags.component.css']
+  templateUrl: './users-list.component.html',
+  styleUrls: ['./users-list.component.css']
 })
-export class TagsComponent {
+export class UsersListComponent {
 
 }

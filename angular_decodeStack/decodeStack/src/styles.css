@@ -87,10 +87,11 @@ app-navigation{
     /* width: 100%; */
     border-right: 2px solid #fefefe;
     flex:.2;   
+    padding: 2px;
 
 }
 
-app-user-profile,app-questions,app-ask-a-public-question,app-post-answer,app-tags{
+app-user-profile,app-questions,app-ask-a-public-question,app-post-answer,app-tags,app-display-answer,app-comments,app-users-list{
         flex:1;
         display:flex;
         flex-wrap:wrap;
@@ -105,7 +106,7 @@ app-user-profile,app-questions,app-ask-a-public-question,app-post-answer,app-tag
             flex-grow: .1;
             width: min(100svw,500px);
         }
-        app-user-profile,app-questions,app-ask-a-public-question,app-post-answer,app-tags{
+        app-user-profile,app-questions,app-ask-a-public-question,app-post-answer,app-tags,app-display-answer,app-comments,app-users-list{
             flex-direction: column;
             flex-grow:1
         }

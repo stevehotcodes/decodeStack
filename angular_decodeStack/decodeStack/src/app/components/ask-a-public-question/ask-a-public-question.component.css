@@ -5,11 +5,11 @@
     height: 100%;
     margin-left: 0.1rem;
     flex-grow:.7;
-    /* border: 1px solid red; */
     gap:2rem;
     justify-content: center;
     align-items: center;
 }
+
 #page-title{
     display: flex;
     justify-content: center;

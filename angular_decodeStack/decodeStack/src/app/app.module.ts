@@ -15,6 +15,9 @@ import { QuestionsComponent } from './components/questions/questions.component';
 import { AskAPublicQuestionComponent } from './components/ask-a-public-question/ask-a-public-question.component';
 import { PostAnswerComponent } from './components/post-answer/post-answer.component';
 import { TagsComponent } from './components/tags/tags.component';
+import { DisplayAnswerComponent } from './components/display-answer/display-answer.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
 
 
 @NgModule({
@@ -33,6 +36,9 @@ import { TagsComponent } from './components/tags/tags.component';
     AskAPublicQuestionComponent,
     PostAnswerComponent,
     TagsComponent,
+    DisplayAnswerComponent,
+    CommentsComponent,
+    UsersListComponent,
     IonicModule.forRoot(),
     FormsModule
    
