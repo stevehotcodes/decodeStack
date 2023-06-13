@@ -46,7 +46,7 @@
 .question-divs{
     display: flex;
     gap:2rem;
-    border-bottom:2px solid gray;
+    box-shadow: var(--default-box-shadow);
     background-color: #fff;
     margin-top: .3rem;
 }
