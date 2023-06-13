@@ -1,0 +1,122 @@
+#user-profile-container{
+    flex:.7;
+    border: 2px solid gray;
+    flex-wrap: wrap;
+    height: 100%;
+
+
+}
+
+#user-image-actions{
+    display:flex;
+    align-items: center;
+    gap:10rem;
+    flex-wrap: wrap;
+
+}
+
+#profile-image{
+    box-sizing: border-box;
+    border-radius: 50%;
+    border:2px solid black;
+    width:150px;
+    height:150px;
+    display:flex;
+    background-color:green;
+}
+#actions{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    
+    
+}
+
+#username-profile{
+    flex:.6;
+    display:flex;
+    align-items: center;
+    gap:2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+#full-name{
+    font-weight: bolder;
+    font-size: 2rem;
+}
+
+#actions{
+    flex:.4;
+    gap:2rem
+}
+
+#edit-profile,#delete-profile{
+    color:white;
+    cursor: pointer;
+    padding:.5rem;
+    border-radius: .5rem;
+}
+
+#edit-profile{
+    background-color: var(--theme-blue-btn-color);
+}
+
+#delete-profile{
+    background-color: #ff1111;
+}
+
+#edit-profile:hover,#delete-profile:hover{
+    color:black;
+    background-color: transparent;
+    
+}
+#edit-profile:hover{
+    border: 2px solid var(--theme-blue-btn-color);
+}
+
+#delete-profile:hover{
+    border: 2px solid #ff1111;
+}
+#stats{
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+#stats-votes-questions{
+    display:flex;
+    flex-direction: column;
+    box-shadow:var(--default-box-shadow);
+    /* justify-content:center; */
+    align-items: center;
+    font-size: large;
+    width: min(60svw, 300px);
+    height: min(60svh, 300px);
+}
+
+#username-email{
+    box-shadow:var(--default-box-shadow);
+    width: min(60svw, 300px);
+    height: min(60svh, 300px);
+    display: flex;
+    flex-direction:column;
+}
+
+.details-stats{
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:2rem;
+    justify-content: center;
+   
+}
+
+@media (max-width:496px) {
+    #user-profile-container{
+        gap:0;
+    }
+}
+
+
+

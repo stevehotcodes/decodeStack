@@ -1,0 +1,57 @@
+<!-- 
+<form  (ngSubmit)="onSubmit()" [formGroup]="signinForm">
+    <h2>Sign in</h2>
+  
+    <div class="inputs">
+        <label for="">Email</label>
+        <input type="text"  placeholder="email"  formControlName="email">
+        <div *ngIf="signinForm.get('email')!.errors && signinForm.get('email')!.touched">
+            <div *ngIf="signinForm.get('email')?.hasError('required')" [style.color]="textColor"[style.font-size.rem]="fontSize">Email is required</div>
+        </div>
+    </div>
+    <div class="inputs">
+        <label for="">Password</label>
+        <input type="text" placeholder="password" formControlName="password">
+        <div *ngIf="signinForm.get('password')!.errors && signinForm.get('password')!.touched">
+            <div *ngIf="signinForm.get('password')?.hasError('required')" >Password is required</div>
+        </div>
+    </div>
+ 
+
+    <div class="inputs">
+        <button type="submit">Submit</button>
+    </div>
+   
+</form> -->
+<form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+    <h2>Sign in</h2>
+
+    <div class="inputs">
+      <label>Email</label>
+      <input type="text" formControlName="email" placeholder="email">
+      <div *ngIf="signinForm.get('email')!.errors && (signinForm.get('email')!.dirty || signinForm.get('email')!.touched)">
+        <div *ngIf="signinForm.get('email')!.errors"[style.color]="textColor"[style.font-size.rem]="fontSize">Email is required</div>
+        <div *ngIf="signinForm.get('email')!.errors" [style.color]="textColor"[style.font-size.rem]="fontSize">Invalid email format</div>
+      </div>
+    </div>
+  
+    <div class="inputs">
+      <label>Password</label>
+      <input type="password" formControlName="password" placeholder="password" >
+      <div *ngIf="signinForm.get('password')!.errors && (signinForm.get('password')!.dirty || signinForm.get('password')!.touched)">
+        <div *ngIf="signinForm.get('password')!.errors" [style.color]="textColor"[style.font-size.rem]="fontSize">password is required</div>
+
+      </div>
+    </div>
+
+  
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+    <div id="form-footer">
+        <div routerLink=""> <span id="forgot-password">Forgot Password?</span> </div>
+        <div routerLink="/signup"> <span id="signin-member">New member</span> | Sign up</div>
+    </div>
+
+  </form>
+  
