@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup,FormControl,ReactiveFormsModule, Validators} from '@angular/forms';
 import { createPasswordValidator } from 'src/app/validators/validators';
 
@@ -17,7 +17,7 @@ export class SignUpComponent implements OnInit {
   textColor:string="red"
   fontSize:number=0.7
 
-  constructor(private formBuilder:FormBuilder){}
+  constructor(private formBuilder:FormBuilder, private router:Router){}
   passwordMismatch:boolean=false
 
   ngOnInit():void{
@@ -30,7 +30,12 @@ export class SignUpComponent implements OnInit {
   }
    
   onSubmit(){
-    console.log(this.signupForm.value)
+    if(this.signupForm.value){
+      console.log(this.signupForm.value);
+      this.router.navigate(['./signin'])
+      
+    }
+
     
   }
 
