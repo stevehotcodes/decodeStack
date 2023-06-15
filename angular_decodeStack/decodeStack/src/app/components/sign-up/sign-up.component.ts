@@ -12,7 +12,7 @@ import { createPasswordValidator } from 'src/app/validators/validators';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-[x: string]: any;
+
   signupForm!:FormGroup
   textColor:string="red"
   fontSize:number=0.7
@@ -39,7 +39,7 @@ export class SignUpComponent implements OnInit {
   }
 
   get email(){
-    return this.signupForm.controls['email' ] 
+    return this.signupForm.controls['email']
   }
 
   get password(){

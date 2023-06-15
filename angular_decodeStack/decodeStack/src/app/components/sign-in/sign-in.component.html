@@ -1,37 +1,13 @@
-<!-- 
-<form  (ngSubmit)="onSubmit()" [formGroup]="signinForm">
-    <h2>Sign in</h2>
-  
-    <div class="inputs">
-        <label for="">Email</label>
-        <input type="text"  placeholder="email"  formControlName="email">
-        <div *ngIf="signinForm.get('email')!.errors && signinForm.get('email')!.touched">
-            <div *ngIf="signinForm.get('email')?.hasError('required')" [style.color]="textColor"[style.font-size.rem]="fontSize">Email is required</div>
-        </div>
-    </div>
-    <div class="inputs">
-        <label for="">Password</label>
-        <input type="text" placeholder="password" formControlName="password">
-        <div *ngIf="signinForm.get('password')!.errors && signinForm.get('password')!.touched">
-            <div *ngIf="signinForm.get('password')?.hasError('required')" >Password is required</div>
-        </div>
-    </div>
- 
 
-    <div class="inputs">
-        <button type="submit">Submit</button>
-    </div>
-   
-</form> -->
 <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
     <h2>Sign in</h2>
 
     <div class="inputs">
       <label>Email</label>
       <input type="text" formControlName="email" placeholder="email">
-      <div *ngIf="signinForm.get('email')!.errors && (signinForm.get('email')!.dirty || signinForm.get('email')!.touched)">
-        <div *ngIf="signinForm.get('email')!.errors"[style.color]="textColor"[style.font-size.rem]="fontSize">Email is required</div>
-        <div *ngIf="signinForm.get('email')!.errors" [style.color]="textColor"[style.font-size.rem]="fontSize">Invalid email format</div>
+      <div *ngIf="signinForm.get('email')!.errors && signinForm.get('email')!.touched">
+        <div *ngIf="signinForm.get('email')!.hasError('required')"[style.color]="textColor"[style.font-size.rem]="fontSize">Email is required</div>
+        <div *ngIf="signinForm.get('email')!.hasError('dirty')" [style.color]="textColor"[style.font-size.rem]="fontSize">Invalid email format</div>
       </div>
     </div>
   

@@ -39,8 +39,10 @@ p{
 #page-header{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     flex-wrap: wrap;
+    gap:2rem;
+    margin-left: 1rem;
 }
 
 .tag-cards{
@@ -60,13 +62,14 @@ p{
     display: flex;
     flex-direction: column;
     width:min(100svw, 300px);
-    height: min(30svh, 300px);
+    height: min(30svh, 350px);
     justify-content: flex-start;
     box-sizing: border-box;
-    padding: .5rem;
+    padding: .3rem;
     background-color: #fefeff;
     border: 1px solid #fff;
     border-radius:15px;
+    font-size: .9rem;
 }
 
 #tag-card:hover{
@@ -80,9 +83,14 @@ p{
   border-radius: .5rem;
 }
 #comments{
-    color:var(--theme-light-gray-color);
+    color:var(--comments-font-color);
     cursor:pointer;
 }
 #comments:hover{
     color:aqua;
+}
+
+.side-navigation-bar div.active{
+    background-color:var(--theme-black-gray-color);
+    border-right:maroon;
 }

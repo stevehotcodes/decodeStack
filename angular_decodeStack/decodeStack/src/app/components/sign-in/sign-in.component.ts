@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule,FormControl,Validators, FormsModule } from '@angular/forms';
+import { createPasswordValidator } from 'src/app/validators/validators';
 
 
 
@@ -30,8 +31,8 @@ ngOnInit() {
 
 buildtheForm() {
   this.signinForm = this.formBuilder.group({
-    email: ['', Validators.required],
-    password: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required,Validators.email]],
+    password: ['', [Validators.required,Validators.minLength(6),createPasswordValidator()]],
    
   });
 }

@@ -1,29 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainpageComponent } from './components/mainpage/mainpage.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { QuestionsComponent } from './components/questions/questions.component';
-import { AskAPublicQuestionComponent } from './components/ask-a-public-question/ask-a-public-question.component';
-import { PostAnswerComponent } from './components/post-answer/post-answer.component';
-import { TagsComponent } from './components/tags/tags.component';
-import { DisplayAnswerComponent } from './components/display-answer/display-answer.component';
-import { CommentsComponent } from './components/comments/comments.component';
-import { UsersListComponent } from './components/users-list/users-list.component';
+
 
 const routes: Routes = [
-  {path:'', component:MainpageComponent},
-  {path:'signup', component:SignUpComponent},
-  {path:'signin', component:SignInComponent},
-  {path:'user-profile',component:UserProfileComponent},
-  {path:'questions', component:QuestionsComponent},
-  {path:'ask-a-question', component:AskAPublicQuestionComponent},
-  {path:'post-answer', component:PostAnswerComponent},
-  {path:'tags', component:TagsComponent},
-  {path:'display-answer', component:DisplayAnswerComponent},
-  {path:'comments',component:CommentsComponent},
-  {path:'users',component:UsersListComponent}
+
+  {path:'signup', loadComponent:()=> import('./components/sign-up/sign-up.component').then(r=>r.SignUpComponent)},
+  {path:'signin', loadComponent:()=>import('./components/sign-in/sign-in.component').then(r=>r.SignInComponent)},
+  {path:'user-profile', loadComponent:()=>import('./components/user-profile/user-profile.component').then(r=>r.UserProfileComponent)},
+  {path:'questions', loadComponent:()=>import('./components/questions/questions.component').then(r=>r.QuestionsComponent)},
+  {path:'ask-a-question',loadComponent:()=>import('./components/ask-a-public-question/ask-a-public-question.component').then(r=>r.AskAPublicQuestionComponent)},
+  {path:'post-answer', loadComponent:()=>import('./components/post-answer/post-answer.component').then(r=>r.PostAnswerComponent)},
+  {path:'tags', loadComponent:()=>import('./components/tags/tags.component').then(r=>r.TagsComponent)},
+  {path:'display-answer',loadComponent:()=>import('./components/display-answer/display-answer.component').then(r=>r.DisplayAnswerComponent)},
+  {path:'comments', loadComponent:()=>import('./components/comments/comments.component').then(r=>r.CommentsComponent)},
+  {path:'users',loadComponent:()=>import('./components/users-list/users-list.component').then(r=>r.UsersListComponent)},
+  {path:'', loadComponent:()=>import('./components/mainpage/mainpage.component').then(r=>r.MainpageComponent)},
+  {path:'**',loadComponent:()=>import('./components/not-found/not-found.component').then(r=>r.NotFoundComponent)}
 ];
 
 @NgModule({
