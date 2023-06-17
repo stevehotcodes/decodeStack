@@ -1,0 +1,12 @@
+CREATE TABLE questions(
+id VARCHAR(255) PRIMARY KEY NOT NULL,
+question_title VARCHAR(MAX) NOT NULL,
+questionDescription VARCHAR (MAX) NOT NULL,
+questionTag VARCHAR (MAX) NOT NULL,
+dateAsked DATE DEFAULT GETDATE() NOT NULL,
+isDeleted INT DEFAULT 0,
+isAnswered INT DEFAULT 0,
+userID VARCHAR (255) NOT NULL FOREIGN KEY REFERENCES stackOverflowUsers(id)
+);
+
+
