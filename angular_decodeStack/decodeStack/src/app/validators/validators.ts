@@ -7,7 +7,7 @@ export function createPasswordValidator():ValidatorFn{
         if(!password){
             return null
         }
-
+        
         const hasLowerCase =/[a-z]+/.test(password)
         const hasUpperCase=/[A-Z]+/.test(password)
         const hasSpecialCharacter=/[!@#$%^&:(),.?]+/.test(password)

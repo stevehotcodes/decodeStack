@@ -10,6 +10,7 @@
   --theme-fade-orange-color:rgba(244,128,35,0.4);
   --default-box-shadow: 0 0 5px rgba(0,0,0,0.2);
   --main-bg-color: #F5F5F5;
+  --comments-font-color:maroon;
 }
 
 *{
@@ -43,7 +44,7 @@ app-header{
     box-sizing: border-box;
     padding:0.5rem 0.5rem;
     box-shadow:var(--default-box-shadow);
-    /* position: sticky; */
+
     top:0;
 }
 
@@ -60,7 +61,7 @@ app-footer {
     padding:0.5rem 0.5rem;
     color:white;
     gap:1rem;
-    position: sticky;
+    /* position: sticky; */
     bottom: 0;
     
 }
@@ -85,13 +86,13 @@ app-navigation{
     display:flex;
     position: sticky;
     /* width: 100%; */
-    border-right: 2px solid #fefefe;
+    /* border-right: 2px solid #fefefe; */
     flex:.2;   
     padding: 2px;
 
 }
 
-app-user-profile,app-questions,app-ask-a-public-question,app-post-answer,app-tags,app-display-answer,app-comments,app-users-list{
+app-user-profile,app-questions,app-ask-a-public-question,app-post-answer,app-tags,app-display-answer,app-comments,app-users-list,app-not-found{
         flex:1;
         display:flex;
         flex-wrap:wrap;
@@ -106,7 +107,7 @@ app-user-profile,app-questions,app-ask-a-public-question,app-post-answer,app-tag
             flex-grow: .1;
             width: min(100svw,500px);
         }
-        app-user-profile,app-questions,app-ask-a-public-question,app-post-answer,app-tags,app-display-answer,app-comments,app-users-list{
+        app-user-profile,app-questions,app-ask-a-public-question,app-post-answer,app-tags,app-display-answer,app-comments,app-users-list,app-not-found{
             flex-direction: column;
             flex-grow:1
         }

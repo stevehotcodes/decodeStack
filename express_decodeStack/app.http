@@ -1,0 +1,84 @@
+###
+POST http://localhost:4000/users
+Content-Type:application/json
+
+{
+    
+    "firstName":" Kevo",
+    "lastName":"Otieno",
+    "userName":"Kevo",
+    "email":"kevo@example.com",
+    "password":"Password@123",
+    "github":"example.com"
+  
+}
+### 
+GET http://localhost:4000/users
+Authorization: :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5OWMyNDkwLWU0NTItNGE0OS05OTRiLTRjMjg3NDFkOGY1NyIsInJvbGUiOiJ1c2VyIiwibmFtZSI6Ikpvc2h1YSAgT25kaWVraSIsImVtYWlsIjoiam9zaHVhQGV4YW1wbGUuY29tIiwiaWF0IjoxNjg3MzIyMzg1LCJleHAiOjE2ODczMjU5ODV9.9-9UL9jIVIOMBNp9eNaFur6P7yMFnJJvgOnHXrdDKYI
+###
+PATCH http://localhost:4000/users/82e515f5-cd26-451d-9c6f-a080a56f6ef6
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5OWMyNDkwLWU0NTItNGE0OS05OTRiLTRjMjg3NDFkOGY1NyIsInJvbGUiOiJ1c2VyIiwibmFtZSI6Ikpvc2h1YSAgT25kaWVraSIsImVtYWlsIjoiam9zaHVhQGV4YW1wbGUuY29tIiwiaWF0IjoxNjg3MzIyMzg1LCJleHAiOjE2ODczMjU5ODV9.9-9UL9jIVIOMBNp9eNaFur6P7yMFnJJvgOnHXrdDKYI
+###
+PATCH http://localhost:4000/users/user/672b3c66-43c1-46fb-8912-c3e84067bd29
+Content-Type: application/json
+
+{
+    "userName":"mosses",
+    "email":"onde@gmail.com"
+    
+}
+
+###
+GET http://localhost:4000/users/672b3c66-43c1-46fb-8912-c3e84067bd29
+
+###
+POST http://localhost:4000/questions
+Content-Type: application/json
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5OWMyNDkwLWU0NTItNGE0OS05OTRiLTRjMjg3NDFkOGY1NyIsInJvbGUiOiJ1c2VyIiwibmFtZSI6Ikpvc2h1YSAgT25kaWVraSIsImVtYWlsIjoiam9zaHVhQGV4YW1wbGUuY29tIiwiaWF0IjoxNjg3MzIyMzg1LCJleHAiOjE2ODczMjU5ODV9.9-9UL9jIVIOMBNp9eNaFur6P7yMFnJJvgOnHXrdDKYI
+
+{
+    "question_title":"what is php",
+    "questionDescription":"what is lazyloading in javascript",
+    "questionTag":"javascript"
+   
+}
+
+###
+GET  http://localhost:4000/questions/6ac2aee0-9706-475b-888b-5539ac981422
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5OWMyNDkwLWU0NTItNGE0OS05OTRiLTRjMjg3NDFkOGY1NyIsInJvbGUiOiJ1c2VyIiwibmFtZSI6Ikpvc2h1YSAgT25kaWVraSIsImVtYWlsIjoiam9zaHVhQGV4YW1wbGUuY29tIiwiaWF0IjoxNjg3MzIyMzg1LCJleHAiOjE2ODczMjU5ODV9.9-9UL9jIVIOMBNp9eNaFur6P7yMFnJJvgOnHXrdDKYI
+###
+GET http://localhost:4000/questions
+###
+PATCH http://localhost:4000/questions/6ac2aee0-9706-475b-888b-5539ac981422
+###
+GET http://localhost:4000/questions/question/672b3c66-43c1-46fb-8912-c3e84067bd29
+###
+POST http://localhost:4000/answers/6ac2aee0-9706-475b-888b-5539ac981422
+Content-Type:application/json
+
+{
+    "answerDescription":"the answer worked for me in the case that you need to overide the function"
+}
+
+###
+GET http://localhost:4000/answers/6ac2aee0-9706-475b-888b-5539ac981422
+###
+POST http://localhost:4000/comments/0a8d8c59-fc5c-45d0-8334-9e927f23cfac
+Content-Type: application/json
+
+{
+    "commentDescription":"good option"
+}
+
+###
+GET http://localhost:4000/comments/0a8d8c59-fc5c-45d0-8334-9e927f23cfac
+###
+PUT http://localhost:4000/votes/e0254753-e5b1-4cc9-afd7-0c6adf0a6563
+###
+POST http://localhost:4000/users/signIn
+Content-Type: application/json
+
+{
+    "email":"joshua@example.com",
+    "password":"Password@123"
+}

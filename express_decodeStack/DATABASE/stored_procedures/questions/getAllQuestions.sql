@@ -1,0 +1,8 @@
+CREATE OR ALTER PROCEDURE getAllQuestions
+AS 
+BEGIN
+
+	SELECT * FROM questions
+	WHERE isDeleted=0
+
+END

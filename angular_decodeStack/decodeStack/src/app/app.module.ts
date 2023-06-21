@@ -18,6 +18,8 @@ import { TagsComponent } from './components/tags/tags.component';
 import { DisplayAnswerComponent } from './components/display-answer/display-answer.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { MainpageComponent } from './components/mainpage/mainpage.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
@@ -29,6 +31,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
     AppRoutingModule,
     HeaderComponent,
     FooterComponent,
+    MainpageComponent,
     SignUpComponent,
     SignInComponent,
     NavigationComponent,
@@ -39,6 +42,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
     DisplayAnswerComponent,
     CommentsComponent,
     UsersListComponent,
+    NotFoundComponent,
     IonicModule.forRoot(),
     FormsModule
    
