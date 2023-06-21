@@ -8,7 +8,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
 dotenv_1.default.config({ path: path_1.default.resolve(__dirname, '../.env') });
 const APPHOST = process.env.APPHOST || '';
-const PORT = process.env.PORT || 3000;
-app_1.default.listen(+PORT, APPHOST, () => {
-    console.log("server is running.... Hoooooray");
+const PORT = process.env.PORT || 4000;
+app_1.default.listen(+PORT, () => {
+    console.log("server is connected and running.... Hoooooray");
 });

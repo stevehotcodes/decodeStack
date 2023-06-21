@@ -1,6 +1,6 @@
 CREATE TABLE questions(
 id VARCHAR(255) PRIMARY KEY NOT NULL,
-question_title VARCHAR(MAX) NOT NULL,
+questionTitle VARCHAR(MAX) NOT NULL,
 questionDescription VARCHAR (MAX) NOT NULL,
 questionTag VARCHAR (MAX) NOT NULL,
 dateAsked DATE DEFAULT GETDATE() NOT NULL,
