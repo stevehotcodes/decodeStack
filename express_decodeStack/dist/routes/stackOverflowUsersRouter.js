@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const stackOverflowUsersController_1 = require("../controllers/stackOverflowUsersController");
+const authorization_1 = require("../Middlewares/authorization");
+const userRoutes = (0, express_1.Router)();
+userRoutes.post('/signup', stackOverflowUsersController_1.addUser);
+userRoutes.get('/all', authorization_1.accessRequired, stackOverflowUsersController_1.getAllUsers);
+userRoutes.delete('/delete/:id', authorization_1.adminPrivileges, stackOverflowUsersController_1.deleteUser);
+userRoutes.patch('/update', authorization_1.accessRequired, stackOverflowUsersController_1.updateUser);
+userRoutes.get('/one/:id', authorization_1.accessRequired, stackOverflowUsersController_1.getOneUser);
+userRoutes.post('/signin', stackOverflowUsersController_1.signIn);
+userRoutes.get('/signin-user', authorization_1.accessRequired, stackOverflowUsersController_1.getSignedInUser);
+exports.default = userRoutes;
