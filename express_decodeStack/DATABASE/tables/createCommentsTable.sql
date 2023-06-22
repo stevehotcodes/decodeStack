@@ -1,0 +1,8 @@
+CREATE TABLE comments (
+id VARCHAR(255) PRIMARY KEY,
+commentDescription VARCHAR (MAX) NOT NULL,
+userID VARCHAR(255) FOREIGN KEY REFERENCES stackOverflowUsers(id),
+date DATE DEFAULT GETDATE(),
+answerID VARCHAR(255) FOREIGN KEY REFERENCES answers(id)
+);
+

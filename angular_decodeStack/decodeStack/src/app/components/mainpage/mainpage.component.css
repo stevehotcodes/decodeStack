@@ -13,7 +13,7 @@
     background: url("../../../assets/blue-screen-error-codes-4065576-e9b8e54957e04a39b7bb961cb5cf43b7.png") ;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height:79vh;
+    min-height:90vh;
     width: 100%;           
     color:#fff;
     align-items:center;
@@ -28,6 +28,27 @@
     
     text-align:center;
     font-size:2rem;
+    backdrop-filter:blur(50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    
+
     
 } 
 
+#started{
+    background-color: var(--theme-blue-btn-color);
+    box-sizing: border-box;
+    padding:1rem ;
+    width: max-content;
+    height: max-content;
+    border-radius: 20px;
+    
+}
+#started:hover{
+    background-color: #fff;
+    color:black;
+}

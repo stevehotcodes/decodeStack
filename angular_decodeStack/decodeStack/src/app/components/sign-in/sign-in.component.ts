@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule ,Router} from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule,FormControl,Validators, FormsModule } from '@angular/forms';
+import { createPasswordValidator } from 'src/app/validators/validators';
 
 
 
@@ -22,7 +23,7 @@ export class SignInComponent implements OnInit {
 
 signinForm!: FormGroup;
 
-constructor(private formBuilder: FormBuilder) { }
+constructor(private formBuilder: FormBuilder,private router:Router) { }
 
 ngOnInit() {
   this.buildtheForm();
@@ -30,8 +31,8 @@ ngOnInit() {
 
 buildtheForm() {
   this.signinForm = this.formBuilder.group({
-    email: ['', Validators.required],
-    password: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required,Validators.email]],
+    password: ['', [Validators.required,Validators.minLength(6),createPasswordValidator()]],
    
   });
 }
@@ -41,6 +42,7 @@ onSubmit() {
     
     console.log(this.signinForm.value);
     // Handle form submission
+    this.router.navigate(['/questions'])
   }
 }
   

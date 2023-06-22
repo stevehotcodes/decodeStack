@@ -42,13 +42,13 @@ form{
     flex-direction: column;
 }
 
-#title,#description,#tag{
+#question-title,#description,#tag{
     width:min(100svw, 90%);
     border:none;
     box-shadow: var(--default-box-shadow);
 }
 
-#title,#tag{
+#question-title,#tag{
     height: 2.5rem;
 }
 #tag{
@@ -61,3 +61,12 @@ form{
 label{
     font-weight: bolder;
 }
+
+input.ng-touched.ng-invalid{
+    border:1px solid red;
+}
+
+input.ng-valid.ng-touched{
+    border:2px solid green;
+}
+  
