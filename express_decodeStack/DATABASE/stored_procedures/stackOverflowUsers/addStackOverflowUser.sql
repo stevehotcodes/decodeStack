@@ -11,6 +11,6 @@ CREATE OR ALTER PROCEDURE addStackOverflowUser(
 AS
 
 BEGIN 
-	INSERT INTO stackOverflowUsers(id,firstName,lastName,userName,email,password,github)
-	VALUES (@id,@firstName,@lastName,@userName,@email,@password,@github)
+	INSERT INTO stackOverflowUsers(id,firstName,lastName,userName,email,password,github,isActive)
+	VALUES (@id,@firstName,@lastName,@userName,@email,@password,@github,1)
 END

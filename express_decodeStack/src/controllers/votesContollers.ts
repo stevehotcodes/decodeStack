@@ -5,23 +5,24 @@ import { IRequest, IVotes,  } from "../interfaces/types";
 
 const db= DatabaseHelper.getInstance();
 
-export const addVote=async (req:IRequest,res:Response)=>{
+export const upVote=async (req:IRequest,res:Response)=>{
     try {
         const{answerID}=req.params
         const userID=req.info?.id as string
         let voted='1'
         //fetch vote details
-        const voteDetails:IVotes= await (await db.exec('getVoteByAnswerId',{answerID})).recordset[0]
-        let voteID =voteDetails.id
+        const voteDetails:IVotes= await (await db.exec('getVoteByAnswerId',{answerID ,userID})).recordset[0]
+        let voteID =voteDetails?.id
         //check if the vote exists
-        if(!voteID){
-            return res.status(404).json({message:"Can't vote"});
+        if(voteDetails?.isUpvoted=='0'){
+            // delete downvote before upvote
+            await db.exec('removeVote',{id:voteID})
         }
         //check if the vote status is voted 
-        if(voteDetails.isUpvoted==voted){
-            return res.status(500).json({message:"Already voted"})
+        if(voteDetails?.isUpvoted==voted){
+            return res.status(409).json({message:"Already voted"})
         }
-        await db.exec('addVote',{answerID,userID,id:voteID})
+        await db.exec('upVote',{answerID,userID,id:uid()})
       
        return  res.status(201).json({message:"voted successfully"})
         
@@ -35,19 +36,21 @@ export const downVote =async (req:IRequest,res:Response)=>{
     try{
         const {answerID}=req.params;
         const userID=req.info?.id as string
-        let voted='1'
+        let voted='0'
         //fetch vote Details
-        const voteDetails:IVotes= await (await db.exec('getVoteByAnswerId',{answerID})).recordset[0]
-        let voteID =voteDetails.id
-        if(!voteID){
-            return res.status(404).json({message:"Can't vote"});
+        const voteDetails:IVotes= await (await db.exec('getVoteByAnswerId',{answerID,userID})).recordset[0]
+        let voteID =voteDetails?.id
+        if(voteDetails?.isUpvoted=='0'){
+            return res.status(409).json({message:"Can't vote"});
         }
         //check if the vote status is voted 
-        if(voteDetails.isUpvoted==voted){
+        if(voteDetails?.isUpvoted=='1'){
             //revert the upvote
-            await db.exec('downVote',{answerID,userID,id:voteID})
-            return res.status(200).json({message:'the answer has been downvoted'})
+            await db.exec('removeVote',{id:voteID})
         }
+        await db.exec('downVote',{answerID,userID,id:uid()})
+        return res.status(200).json({message:'the answer has been downvoted'})
+        
 
         
     }

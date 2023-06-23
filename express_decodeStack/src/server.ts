@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 4000
 
 
 
-app.listen(+PORT, ()=>{
+app.listen(+PORT,APPHOST, ()=>{
     console.log("server is connected and running.... Hoooooray")
     
 })

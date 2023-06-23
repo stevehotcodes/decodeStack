@@ -11,6 +11,4 @@ BEGIN
 	INSERT INTO questions (id,questionTitle,questionDescription,questionTag,userID)
 	VALUES (@id,@question_title,@questionDescription,@questionTag,@userID)
 
-	
-
 END

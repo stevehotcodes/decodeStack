@@ -9,6 +9,6 @@ const path_1 = __importDefault(require("path"));
 dotenv_1.default.config({ path: path_1.default.resolve(__dirname, '../.env') });
 const APPHOST = process.env.APPHOST || '';
 const PORT = process.env.PORT || 4000;
-app_1.default.listen(+PORT, () => {
+app_1.default.listen(+PORT, APPHOST, () => {
     console.log("server is connected and running.... Hoooooray");
 });
