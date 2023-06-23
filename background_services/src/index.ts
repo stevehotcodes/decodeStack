@@ -1,29 +1,24 @@
-
+import cron from "node-cron"
+import { sendNewUserWelcomeEmail } from "./EmailServices/welcomeEmail";
 import nodemailer from 'nodemailer'
 
+
 let configOptions={
+    pool:true,
     host:"smtp.gmail.com",
+    service:"gmail",
     port:587,
     secure:false,
     auth:{
-        user:"teststeve83@gmail.com",
-        pass:"tkllkingflfnuvbs"
+        user:process.env.EMAIL,
+        pass:process.env.PASSWORD
     }
 }
-//message options
 
-let messageOption ={
-    from: "teststeve83@gmail.com",
-    to: "teststeve83@gmail.com",
-    subject: "NEW NODEMAILER",
-    text: "Plaintext version of the message",
-    html: "<p>HTML version of the message</p>"
-}
+let transport= nodemailer.createTransport(configOptions)
 
-//function send the mal
-async function sendMail(messageOpts:any){
-    let  transporter =nodemailer.createTransport(configOptions)
-   await transporter.sendMail(messageOpts)
-}
-
-sendMail(messageOption)
+cron.schedule('* * * * * *', async()=>{
+    console.log("Sending welcome email.........")
+     await sendNewUserWelcomeEmail(await transport)
+   
+})

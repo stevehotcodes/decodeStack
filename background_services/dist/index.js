@@ -12,30 +12,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const node_cron_1 = __importDefault(require("node-cron"));
+const welcomeEmail_1 = require("./EmailServices/welcomeEmail");
 const nodemailer_1 = __importDefault(require("nodemailer"));
-pa;
 let configOptions = {
+    pool: true,
     host: "smtp.gmail.com",
+    service: "gmail",
     port: 587,
     secure: false,
     auth: {
-        user: "teststeve83@gmail.com",
-        pass: "tkllkingflfnuvbs"
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD
     }
 };
-//message options
-let messageOption = {
-    from: "teststeve83@gmail.com",
-    to: "teststeve83@gmail.com",
-    subject: "NEW NODEMAILER",
-    text: "Plaintext version of the message",
-    html: "<p>HTML version of the message</p>"
-};
-//function send the mal
-function sendMail(messageOpts) {
-    return __awaiter(this, void 0, void 0, function* () {
-        let transporter = nodemailer_1.default.createTransport(configOptions);
-        yield transporter.sendMail(messageOpts);
-    });
-}
-sendMail(messageOption);
+let transport = nodemailer_1.default.createTransport(configOptions);
+node_cron_1.default.schedule('* * * * * *', () => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("Sending welcome email.........");
+    yield (0, welcomeEmail_1.sendNewUserWelcomeEmail)(yield transport);
+}));
