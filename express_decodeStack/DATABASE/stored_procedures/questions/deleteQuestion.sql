@@ -5,4 +5,3 @@ BEGIN
 	 SET isDeleted=1
 	 WHERE id=@id AND isDeleted=0 
  END
- 

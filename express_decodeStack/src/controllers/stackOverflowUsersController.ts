@@ -26,7 +26,7 @@ function filterUserInfo(users:IUser[]):void{
 export const addUser =async (req:Request,res:Response)=>{
     
     try{
-    
+        const db=DatabaseHelper.getInstance()
         let id=uid()
         let {firstName,lastName,userName,email,password,github}=req.body;
         //validate first
@@ -48,6 +48,8 @@ export const addUser =async (req:Request,res:Response)=>{
         .input('github',mssql.VarChar,github)              
         .execute('addUser')
       // await db.exec('addStackOverflowUser',{id,firstName,lastName,userName,email,hashedPassword})
+
+        await db.query(`UPDATE stackOverflowUsers SET isActive=1 WHERE id=${id}`)
         return res.status(201).json({message:`user${firstName} has been created successfully`})
 
     }

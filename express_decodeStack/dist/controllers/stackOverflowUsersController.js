@@ -32,6 +32,7 @@ function filterUserInfo(users) {
 }
 const addUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const db = DatabaseHelper_1.default.getInstance();
         let id = (0, uuid_1.v4)();
         let { firstName, lastName, userName, email, password, github } = req.body;
         //validate first
@@ -52,6 +53,7 @@ const addUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             .input('github', mssql_1.default.VarChar, github)
             .execute('addUser');
         // await db.exec('addStackOverflowUser',{id,firstName,lastName,userName,email,hashedPassword})
+        yield db.query(`UPDATE stackOverflowUsers SET isActive=1 WHERE id=${id}`);
         return res.status(201).json({ message: `user${firstName} has been created successfully` });
     }
     catch (error) {
