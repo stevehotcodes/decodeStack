@@ -21,7 +21,7 @@ function createTransporter(configOpts:any){
 export async function sendMailProcess(messageOptions:any) {
     //create the transporter
     let transporter=createTransporter(configOptions)
-
+    //send the email
     await transporter.sendMail(messageOptions,(err,response)=>{
         console.log(response);
         
