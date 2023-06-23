@@ -1,0 +1,9 @@
+CREATE OR ALTER PROCEDURE getVoteById(
+@id VARCHAR(255)
+)
+AS 
+BEGIN
+	SELECT * FROM votes
+	WHERE answerID=@answerID
+
+END

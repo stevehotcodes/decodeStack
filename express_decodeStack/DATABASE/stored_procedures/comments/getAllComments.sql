@@ -1,0 +1,7 @@
+CREATE OR ALTER PROCEDURE getAllComments(
+@answerID VARCHAR (255))
+AS
+
+BEGIN 
+SELECT * FROM comments WHERE answerID=@answerID
+END

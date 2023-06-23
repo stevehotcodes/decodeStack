@@ -1,0 +1,9 @@
+CREATE OR ALTER PROCEDURE getAQuestionById(@id VARCHAR (255))
+AS
+
+BEGIN
+
+	 SELECT * FROM questions
+	 WHERE id=@id
+
+END

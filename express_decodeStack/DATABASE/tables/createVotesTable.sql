@@ -1,7 +1,9 @@
 CREATE TABLE votes(
 id VARCHAR (255),
-upvotes INT DEFAULT 0,
-downvotes INT DEFAULT 0,
+isUpvoted INT DEFAULT 0,
 answerID VARCHAR (255) FOREIGN KEY REFERENCES answers(id),
 userID VARCHAR(255) FOREIGN KEY REFERENCES stackOverflowUsers(id)
 );
+
+
+

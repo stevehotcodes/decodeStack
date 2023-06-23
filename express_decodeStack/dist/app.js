@@ -28,10 +28,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importStar(require("express"));
 const cors_1 = __importDefault(require("cors"));
+const stackOverflowUsersRouter_1 = __importDefault(require("./routes/stackOverflowUsersRouter"));
+const questionsRoutes_1 = __importDefault(require("./routes/questionsRoutes"));
+const answerRoutes_1 = __importDefault(require("./routes/answerRoutes"));
+const commentsRoutes_1 = __importDefault(require("./routes/commentsRoutes"));
+const votesRoutes_1 = __importDefault(require("./routes/votesRoutes"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use((0, express_1.json)());
 app.get('/', (req, res) => {
     return res.status(200).send("hollaholla");
 });
+app.use('/users', stackOverflowUsersRouter_1.default);
+app.use('/questions', questionsRoutes_1.default);
+app.use('/answers', answerRoutes_1.default);
+app.use('/comments', commentsRoutes_1.default);
+app.use('/votes', votesRoutes_1.default);
 exports.default = app;
