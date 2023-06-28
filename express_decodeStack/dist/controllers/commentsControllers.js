@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllComments = exports.addComment = void 0;
 const uuid_1 = require("uuid");
 const DatabaseHelper_1 = __importDefault(require("../helpers/DatabaseHelper"));
+const Validators_1 = require("../helpers/Validators");
 const db = DatabaseHelper_1.default.getInstance();
 const addComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
@@ -23,6 +24,10 @@ const addComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         const userID = (_a = req.info) === null || _a === void 0 ? void 0 : _a.id;
         const { answerID } = req.params;
         const { commentDescription } = req.body;
+        const { error } = Validators_1.commentInputValidators.validate(req.body);
+        if (error) {
+            return res.status(406).json({ error: error.details[0].message });
+        }
         yield db.exec('addComment', { id, userID, answerID, commentDescription });
         return res.status(201).json({ message: 'comment successfully added' });
     }
@@ -35,7 +40,7 @@ const getAllComments = (req, res) => __awaiter(void 0, void 0, void 0, function*
     try {
         const { answerID } = req.params;
         const comments = (yield db.exec('getAllComments', { answerID })).recordset;
-        return res.status(200).json({ comments });
+        return res.status(200).json(comments);
     }
     catch (error) {
         return res.status(500).json(error.message);

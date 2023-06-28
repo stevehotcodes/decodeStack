@@ -1,15 +1,12 @@
 
 <div id="container">
-    <div id="page-title"> <p>Question Title</p></div>
+   
     <form id="question-form" [formGroup]="answerForm" (ngSubmit)="onAnswer()">
-        <div class="answer-title" class="answer-inputs">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-        </div>
-
+    
         <div class="answer-description" class="answer-inputs">
-            <label for="">Answer</label>
-            <input type="text" id="description" formControlName="description" required>
-            <div *ngIf="answerForm.get('description')!.errors && answerForm.get('description')?.touched">Answer cannot be empty</div>
+            <label for=""> Your Answer</label>
+            <input type="text" id="description" formControlName="answerDescription" required>
+            <div *ngIf="answerForm.get('answerDescription')!.errors && answerForm.get('answerDescription')?.touched" id="error">Answer cannot be empty</div>
         </div>
 
 

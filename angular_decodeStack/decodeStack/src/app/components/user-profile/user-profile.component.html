@@ -1,9 +1,9 @@
 <app-navigation></app-navigation>
-<div id="user-profile-container">
+<div id="user-profile-container"  >
     <div id="user-image-actions">
-        <div id="username-profile">
-            <div id="profile-image">Image</div>
-            <div id="full-name">John Doe</div>
+        <div id="username-profile" *ngIf="user">
+            <div id="profile-image"></div>
+            <div id="full-name">{{user.firstName +"  "+ user.lastName}}</div>
         </div>
        
         <div id="actions">
@@ -13,21 +13,25 @@
     </div>
     <div class="details-stats">
         <div id="username-email">
-            <div id="username">Username</div>
-            <div id="email">Email</div>
+            <div id="username">{{user.userName}}</div>
+            <div id="email">{{user.email}}</div>
+            <div>Date Joined:{{user.dateJoined |date}}</div>
         </div> 
     
         <div id="stats-votes-questions">
             <div id="stats">Stats</div>
             <div id="votes">Votes:20</div>
-            <div id="questions">Questions:20</div>
+            <div id="questions">Questions:{{questions.length}}</div>
         </div>
 
-        <div>Questions</div>
-        <div>
-            lorem questions
-        </div>
            
+    </div>
+    
+    <div *ngIf="questions"  id="questions">
+        <h3>Question by: {{user.firstName}}</h3>
+        <div *ngFor="let question of questions">
+            {{question.questionTitle}}
+        </div>
     </div>
    
 

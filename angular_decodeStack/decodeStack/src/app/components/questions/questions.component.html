@@ -1,125 +1,31 @@
 <app-navigation></app-navigation>
-<div id="container">
+<div id="container" >
     <div id="questions-title-ask-button">
         <div id="all-questions">All Questions</div>
         <div id="ask-button" routerLink="/ask-a-question">Ask Question</div>
     </div>
 
-    <div class="question-divs">
+    <div class="question-divs" *ngFor="let question of questions">
         <div id="votes-answer">
-            <div id="votes">2 votes</div>
-            <div id="answer">1 answer</div>
+            <!-- <div id="votes">2 votes</div> -->
+            <div id="answer">{{answers.length}} answers</div>
         </div>
         
         <div id="question-tag">
-            <div id="question" routerLink="/display-answer"><p>Difference between impure and Pure Function?</p></div>
-            <div id="tag">Java</div>
+            <div id="question" [routerLink]="['/display-answer', question.id]"><p>{{question.questionTitle}}</p></div>
+            <div id="tag">{{question.questionTag}}</div>
         </div>
-        <div id="author-date">
+        <div id="author-date" >
             <p>Asked by:Stephen Ondieki</p>
-            <p>Date :30/04/2023 </p>
+            <p>Date :{{question.dateAsked | date}} </p>
         </div>
-    
+        <ion-icon name="trash" id="delete" *ngIf="isAdmin"   (click)="questionDelete(question.id)"></ion-icon>
     </div>
 
-     <div class="question-divs">
-        <div id="votes-answer">
-            <div id="votes">2 votes</div>
-            <div id="answer">1 answer</div>
-        </div>
-        
-        <div id="question-tag">
-            <div id="question" routerLink="/display-answer"><p>Difference between impure and Pure Function?</p></div>
-            <div id="tag">Java</div>
-        </div>
-        <div id="author-date">
-            <p>Asked by:Stephen Ondieki</p>
-            <p>Date :30/04/2023 </p>
-        </div>
+   
     
-    </div>
+    
 
-     <div class="question-divs">
-        <div id="votes-answer">
-            <div id="votes">2 votes</div>
-            <div id="answer">1 answer</div>
-        </div>
-        
-        <div id="question-tag">
-            <div id="question" routerLink="/display-answer"><p>Difference between impure and Pure Function?</p></div>
-            <div id="tag">Java</div>
-        </div>
-        <div id="author-date">
-            <p>Asked by:Stephen Ondieki</p>
-            <p>Date :30/04/2023 </p>
-        </div>
     
-    </div>
-
-     <div class="question-divs">
-        <div id="votes-answer">
-            <div id="votes">2 votes</div>
-            <div id="answer">1 answer</div>
-        </div>
-        
-        <div id="question-tag">
-            <div id="question" routerLink="/display-answer"><p>Difference between impure and Pure Function?</p></div>
-            <div id="tag">Java</div>
-        </div>
-        <div id="author-date">
-            <p>Asked by:Stephen Ondieki</p>
-            <p>Date :30/04/2023 </p>
-        </div>
     
-    </div>
-
-     <div class="question-divs">
-        <div id="votes-answer">
-            <div id="votes">2 votes</div>
-            <div id="answer">1 answer</div>
-        </div>
-        
-        <div id="question-tag">
-            <div id="question" routerLink="/display-answer"><p>Difference between impure and Pure Function?</p></div>
-            <div id="tag">Java</div>
-        </div>
-        <div id="author-date">
-            <p>Asked by:Stephen Ondieki</p>
-            <p>Date :30/04/2023 </p>
-        </div>
-    
-    </div>
-
-     <div class="question-divs">
-        <div id="votes-answer">
-            <div id="votes">2 votes</div>
-            <div id="answer">1 answer</div>
-        </div>
-        
-        <div id="question-tag">
-            <div id="question" routerLink="/display-answer"><p>Difference between impure and Pure Function?</p></div>
-            <div id="tag">Java</div>
-        </div>
-        <div id="author-date">
-            <p>Asked by:Stephen Ondieki</p>
-            <p>Date :30/04/2023 </p>
-        </div>
-    
-    </div>
-     <div class="question-divs">
-        <div id="votes-answer">
-            <div id="votes">2 votes</div>
-            <div id="answer">1 answer</div>
-        </div>
-        
-        <div id="question-tag">
-            <div id="question" routerLink="/display-answer"><p>Difference between impure and Pure Function?</p></div>
-            <div id="tag">Java</div>
-        </div>
-        <div id="author-date">
-            <p>Asked by:Stephen Ondieki</p>
-            <p>Date :30/04/2023 </p>
-        </div>
-    
-    </div>
 </div>

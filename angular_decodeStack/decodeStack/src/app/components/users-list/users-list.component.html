@@ -4,91 +4,15 @@
         <p>Users</p>
        
     </div>
-    <div class="user-cards">
-        <div class="user-card" >
+    <div class="user-cards" *ngIf="users">
+        <div class="user-card" *ngFor="let user of users" >
             <div><ion-icon name="person-circle-outline" id="profile-icon"></ion-icon></div>
-            <div  class="username" routerLink="/user-profile"> 
-                Username
+            <div  class="username" [routerLink]="['/user-profile',user.id]"> 
+                {{user.firstName +"  "+ user.lastName}}
             </div>
             <p id="status">active</p>
-        <ion-icon name="trash" id="delete"></ion-icon>
+        <ion-icon name="trash" id="delete" *ngIf="isAdmin" (click)="userDelete(user.id)" ></ion-icon>
         </div>
-
-        <div class="user-card" >
-            <div><ion-icon name="person-circle-outline" id="profile-icon"></ion-icon></div>
-            <div  class="username" routerLink="/user-profile"> 
-                Username
-            </div>
-            <p id="status">active</p>
-            <ion-icon name="trash" id="delete"></ion-icon>
-        </div>
-
-        <div class="user-card" >
-            <div><ion-icon name="person-circle-outline" id="profile-icon"></ion-icon></div>
-            <div class="username" routerLink="/user-profile"> 
-                Username
-            </div>
-            <p id="status">active</p>
-            <ion-icon name="trash" id="delete"></ion-icon>
-        </div>
-
-        <div class="user-card" >
-            <div><ion-icon name="person-circle-outline" id="profile-icon"></ion-icon></div>
-            <div class="username" routerLink="/user-profile"> 
-                Username
-            </div>
-            <p id="status">active</p>
-            <ion-icon name="trash" id="delete"></ion-icon>
-        </div>
-
-        <div class="user-card" >
-            <div><ion-icon name="person-circle-outline" id="profile-icon"></ion-icon></div>
-            <div class="username" routerLink="/user-profile"> 
-                Username
-            </div>
-            <p id="status">active</p>
-            <ion-icon name="trash" id="delete"></ion-icon>
-        </div>
-
-        <div class="user-card" >
-            <div><ion-icon name="person-circle-outline" id="profile-icon"></ion-icon></div>
-            <div class="username" routerLink="/user-profile"> 
-                Username
-            </div>
-            <p id="status">active</p>
-            <ion-icon name="trash" id="delete"></ion-icon>
-        </div>
-
-        <div class="user-card" >
-            <div><ion-icon name="person-circle-outline" id="profile-icon"></ion-icon></div>
-            <div class="username" routerLink="/user-profile"> 
-                Username
-            </div>
-            <p id="status">active</p>
-            <ion-icon name="trash" id="delete"></ion-icon>
-        </div>
-
-        <div class="user-card" >
-            <div><ion-icon name="person-circle-outline" id="profile-icon"></ion-icon></div>
-            <div class="username" routerLink="/user-profile"> 
-                Username
-            </div>
-            <p id="status">active</p>
-            <ion-icon name="trash" id="delete"></ion-icon>
-        </div>
-        <div class="user-card" >
-            <div><ion-icon name="person-circle-outline" id="profile-icon"></ion-icon></div>
-            <div class="username" routerLink="/user-profile"> 
-                Username
-            </div>
-            <p id="status">active</p>
-            <ion-icon name="trash" id="delete"></ion-icon>
-        </div>
-
-        
-        
-
-
     </div>
    
 

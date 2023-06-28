@@ -111,6 +111,11 @@
     justify-content: center;
    
 }
+#questions{
+    display:flex;
+    flex-direction:column;
+    background-color: aqua;
+}
 
 @media (max-width:496px) {
     #user-profile-container{

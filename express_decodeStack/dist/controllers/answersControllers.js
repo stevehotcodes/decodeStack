@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAnswer = exports.addAnswer = void 0;
 const DatabaseHelper_1 = __importDefault(require("../helpers/DatabaseHelper"));
 const uuid_1 = require("uuid");
+const Validators_1 = require("../helpers/Validators");
 const db = DatabaseHelper_1.default.getInstance();
 const addAnswer = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
@@ -24,6 +25,10 @@ const addAnswer = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         let userID = (_a = req.info) === null || _a === void 0 ? void 0 : _a.id;
         const { questionID } = req.params;
         const { answerDescription } = req.body;
+        const { error } = Validators_1.answersInputValidators.validate(req.body);
+        if (error) {
+            return res.status(406).json({ error: error.details[0].message });
+        }
         yield db.exec('addAnswer', { id, userID, answerDescription, questionID, voteID });
         return res.status(201).json({ message: 'answer added to the database' });
     }

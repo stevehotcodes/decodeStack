@@ -2,6 +2,7 @@ import { Request,Response } from "express";
 import DatabaseHelper from "../helpers/DatabaseHelper";
 import {v4 as uid} from 'uuid';
 import { IAnswer, IRequest } from "../interfaces/types";
+import { answersInputValidators } from "../helpers/Validators";
 
 
 
@@ -17,6 +18,10 @@ export const addAnswer = async(req:IRequest,res:Response)=>{
         let userID=req.info?.id as string
         const {questionID}=req.params
         const{answerDescription}=req.body
+        const{error}=answersInputValidators.validate(req.body)
+        if(error){
+            return res.status(406).json({error:error.details[0].message})
+        }
         await db.exec('addAnswer',{id,userID,answerDescription,questionID,voteID});
         return res.status(201).json({message:'answer added to the database'});
     } 

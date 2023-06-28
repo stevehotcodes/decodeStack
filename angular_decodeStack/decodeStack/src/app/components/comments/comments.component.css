@@ -15,7 +15,7 @@
     font-weight: bolder;
 }
 
-#answer{
+#comment{
     display: flex;
     background-color: var(--theme-fade-orange-color);
     margin-bottom: .1rem;

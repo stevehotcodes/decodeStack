@@ -7,3 +7,5 @@ BEGIN
 	INSERT INTO tags(id, tagTitle,questionID)
 	VALUES(@id,@tagTitle,@questionID)
 END
+
+

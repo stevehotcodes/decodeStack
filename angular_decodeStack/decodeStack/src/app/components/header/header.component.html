@@ -3,12 +3,26 @@
     <h2>Decode<span id="Stack">Stack</span></h2>
 
 </div>
-<form id="search-header-form">
+<form id="search-header-form"  *ngIf="loggedUser">
     <input type="text" placeholder="search" id="query">
     <ion-icon name="search-outline" id="search-icon" width="4"></ion-icon>
 </form>
 
-<div id="header-actions">
+<div id="header-actions" *ngIf="!loggedUser">
     <div id="sign-in" class="header-btns" routerLink="/signup">Sign up</div>
-    <div id="sign-up" class="header-btns" routerLink="/signin">Sign in </div>
+    <div id="sign-up" class="header-btns" routerLink="/signin" >Sign in </div>
+</div>
+
+
+<div id="header-actions">
+      <!-- <div  class="user-actions">
+        <div id="signin-btn" class="cursor-pointer hover-underline" routerLink="signin"><a>Sign in</a></div>
+        <div id="signup-btn" class="cursor-pointer" routerLink="signup" ><a >Sign up</a></div>
+    </div> -->
+    <div *ngIf="loggedUser" class="user-actions">
+        <div id="avatar" class="cursor-pointer">
+            <ion-icon name="person-circle-outline" size="large"></ion-icon>
+        </div>
+        <div id="signout-btn" class="cursor-pointer hover-underline"  (click)="signOut()"><a>Sign out</a></div>
+    </div>
 </div>

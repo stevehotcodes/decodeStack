@@ -1,23 +1,50 @@
 <form [formGroup]="signupForm" id="form" (ngSubmit)="onSubmit()">
     <h2>Sign up</h2>
+
     <div class="inputs">
-        <label for="">Username</label>
-        <input type="text" formControlName="username" placeholder="Username">
-        <div *ngIf="username!.errors && username!.invalid &&username!.touched">
-            <div *ngIf="signupForm.get('username')?.hasError('required')" [style.color]="textColor "[style.font-size.rem]="fontSize">Username is required</div>
+        <label for="">Firstname</label>
+        <input type="text" formControlName="firstName" placeholder="Your firstname ">
+        <div *ngIf="firstName?.errors && firstName!.invalid &&firstName!.touched">
+            <div *ngIf="signupForm.get('firstName')?.hasError('required')" [style.color]="textColor "[style.font-size.rem]="fontSize">Firstname is required</div>
         </div>
     </div>
+
+    <div class="inputs">
+        <label for="">Lastname</label>
+        <input type="text" formControlName="lastName" placeholder="Your lastname ">
+        <div *ngIf="lastName?.errors && lastName!.invalid &&lastName!.touched">
+            <div *ngIf="signupForm.get('lastName')?.hasError('required')" [style.color]="textColor "[style.font-size.rem]="fontSize">Lastname is required</div>
+        </div>
+    </div>
+
+    <div class="inputs">
+        <label for="">Username</label>
+        <input type="text" formControlName="userName" placeholder="Username">
+        <div *ngIf="userName?.errors && userName!.invalid &&userName!.touched">
+            <div *ngIf="signupForm.get('userName')?.hasError('required')" [style.color]="textColor "[style.font-size.rem]="fontSize">Username is required</div>
+        </div>
+    </div>
+
     <div class="inputs">
         <label for="">Email</label>
         <input type="text"  formControlName="email" placeholder="Email">
-        <div *ngIf="email!.errors && email!.invalid && email!.touched">
+        <div *ngIf="email?.errors && email!.invalid && email!.touched">
             <div *ngIf="signupForm.get('email')?.hasError('required')" [style.color]="textColor "[style.font-size.rem]="fontSize">Email is required</div>
         </div>
     </div>
+
+    <div class="inputs">
+        <label for="">Github</label>
+        <input type="text"  formControlName="github" placeholder="github">
+        <div *ngIf="github?.errors && github!.invalid && github!.touched">
+            <div *ngIf="signupForm.get('github')?.hasError('required')" [style.color]="textColor "[style.font-size.rem]="fontSize">github is required</div>
+        </div>
+    </div>
+
     <div class="inputs">
         <label for="">Password</label>
         <input type="password" formControlName="password" placeholder="Password"  [ngClass]="{'invalid-input':signupForm.get('password')!.invalid && signupForm.get('password')!.touched}" >
-        <div *ngIf="password!.errors && password!.invalid && password!.touched ">
+        <div *ngIf="password?.errors && password!.invalid && password!.touched ">
             <div *ngIf="signupForm.get('password')!.hasError('required')" [style.color]="textColor "[style.font-size.rem]="fontSize">Password is required</div>
             <div *ngIf="password.hasError('passwordStrength')"[style.color]="textColor" [style.font-size.rem]="fontSize">Password must have a number, a special character, an uppercase character, and lowercase character</div>
         </div>
@@ -26,7 +53,7 @@
     <div class="inputs">
         <label for="">Confirm Password</label>
         <input type="password" formControlName="confirmPassword" placeholder="Confirm Password">
-        <div *ngIf="confirmPassword!.errors && confirmPassword!.touched&& confirmPassword!.invalid">
+        <div *ngIf="confirmPassword?.errors && confirmPassword!.touched&& confirmPassword!.invalid">
             <div *ngIf="signupForm.get('confirmPassword')?.hasError('required')" [style.color]="textColor" [style.font-size.rem]="fontSize">Password is required</div>
             <span *ngIf="confirmPassword!.value!==password!.value" [style.color]="textColor" [style.font-size.rem]="fontSize">Password do not match</span>
            

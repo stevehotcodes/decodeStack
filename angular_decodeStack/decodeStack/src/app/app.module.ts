@@ -20,6 +20,12 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { MainpageComponent } from './components/mainpage/mainpage.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { UserServicesService } from './services/user.service';
+import { FlashMessagesComponent } from './components/flash-messages/flash-messages.component';
+import { QuestionsService } from './services/questions.service';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './reducers/users.reducer';
 
 
 @NgModule({
@@ -33,7 +39,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     FooterComponent,
     MainpageComponent,
     SignUpComponent,
-    SignInComponent,
+    FlashMessagesComponent,
     NavigationComponent,
     QuestionsComponent,
     AskAPublicQuestionComponent,
@@ -44,12 +50,14 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     UsersListComponent,
     NotFoundComponent,
     IonicModule.forRoot(),
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    StoreModule.forRoot({userReducer}, {})
    
    
   ],
   
-  providers: [],
+  providers: [ UserServicesService,QuestionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

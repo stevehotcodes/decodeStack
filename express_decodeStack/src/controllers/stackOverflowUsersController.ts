@@ -4,8 +4,8 @@ import bcrypt  from 'bcrypt'
 import mssql from 'mssql'
 import { sqlConfig } from "../config"
 import DatabaseHelper from "../helpers/DatabaseHelper"
-import { IRequest, IUser } from "../interfaces/types"
-import { registrationSchema } from "../helpers/Validators";
+import { IRequest, IUser, TfilterType } from "../interfaces/types"
+import { registrationSchema, signInValidator } from "../helpers/Validators";
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 import path from 'path'
@@ -32,7 +32,7 @@ export const addUser =async (req:Request,res:Response)=>{
         //validate first
         const{error}=registrationSchema.validate(req.body);
         if(error){
-            return res.status(400).json({error:error.details[0].message})
+            return res.status(406).json({error:error.details[0].message})
         }
         const hashedPassword= await bcrypt.hash(password,10);
         // console.log(hashedPassword)
@@ -55,7 +55,7 @@ export const addUser =async (req:Request,res:Response)=>{
     }
     
      catch(error:any) {
-        return res.status(500).json(error.message)
+        return res.status(406).json({error:error.message})
      }
 }
 
@@ -90,11 +90,23 @@ export const deleteUser =async (req:IRequest , res:Response)=>{
         }
     }
     catch(error:any){
-        res.json(error.message)
+        return res.status(500).json(error.message)
 
     }
     
 }
+
+// async function getUser(filter_type:TfilterType, filter_value:string) {
+//     let user:IUser =(await db.exec('getUserBy', {filter_type,filter_value})).recordset[0]
+//     if(user){
+//         filterSensitiveUserInfo([user])
+//         return user
+//     }
+// }
+
+
+
+
 
 export const updateUser =async (req:IRequest , res:Response)=>{
     try{
@@ -113,23 +125,54 @@ export const updateUser =async (req:IRequest , res:Response)=>{
         }
     }
     catch(error:any){
-       return  res.json(error.message)
+       return  res.status(500).json(error.message)
 
     }
     
+}
+async  function getUser (filter_type:TfilterType,filter_value:string){
+    let user:IUser[]=(await db.exec('getStackOverflowUserBy',{filter_type,filter_value})).recordset;
+    console.log(user)
+    if(user){
+        filterUserInfo(user)
+        return user
+    }
+    return []
+   
+}
+
+export const getUserByEmail:RequestHandler= async(req:Request,res:Response)=>{
+    try {
+        const filter_type:TfilterType='email'
+        const{email}=req.query as {email:string};
+        
+        let user=await getUser(filter_type,email)
+        console.log(user)
+        if(user){
+            return res.status(200).json(user)
+        }
+        return res.status(404).json({message:`user with such email does not exist ${email}`})
+        
+    } catch (error:any) {
+        return res.status(500).json(error.message)
+    }
 }
 
 export const getOneUser =async (req:Request,res:Response)=>{
     try{
         const{id}=req.params
-        const user=(await db.exec('getStackOverUserById',{id})).recordset[0]
-        if(!user){
-            return res.status(404).json({message:'user does not exist'})
-        }
+        const user:IUser[]=(await db.exec('getStackOverUserById',{id})).recordset[0]
+        
+        // if(!user){
+            
+        //     return res.status(404).json({message:'user does not exist'})
+        // }
+        // let fUser=filterUserInfo(user)
+        console.log(user)
         return res.status(200).json(user)
     }
     catch(error:any){
-        return res.status(404).json({message:error.message})
+        return res.status(500).json({message:error.message})
 
     }
 }
@@ -152,6 +195,11 @@ export const getSignedInUser =async (req:IRequest,res:Response)=>{
 export const signIn= async(req:Request, res:Response)=>{
     try{
         const{email,password}=req.body
+        //validate the user input values
+        const{error}=signInValidator.validate(req.body)
+        if(error){
+            return res.status(406).json({error:error.details[0].message})
+        }
         const user:IUser =(await db.exec('getUserBy',{filter_type:'email',filter_value:email})).recordset[0];
         if(!user){return res.status(404).json({message:'user not found'})}
         
@@ -163,7 +211,7 @@ export const signIn= async(req:Request, res:Response)=>{
         const payload ={id:user.id, role:user.role, name, email:user.email}
         const token =jwt.sign(payload,process.env.SECRET_KEY as string, {expiresIn:'63600s'});
         // await db.query('UPDATE stackOverflowUsers SET isActive=1')
-        return res.status(200).json({message:'Signin successful',email,token})
+        return res.status(200).json({message:'Signin successful',email,token, role:user.role})
 
     }   
     catch(error:any){

@@ -17,15 +17,21 @@ const uuid_1 = require("uuid");
 const mssql_1 = __importDefault(require("mssql"));
 const config_1 = require("../config");
 const DatabaseHelper_1 = __importDefault(require("../helpers/DatabaseHelper"));
+const Validators_1 = require("../helpers/Validators");
 const db = DatabaseHelper_1.default.getInstance();
 const addQuestion = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
+        console.log(req.body);
         const id = (0, uuid_1.v4)();
-        const tagId = (0, uuid_1.v4)();
+        // const tagId=uid()
         //user must be signed in
         const userID = (_a = req.info) === null || _a === void 0 ? void 0 : _a.id;
         const { questionTitle, questionDescription, questionTag } = req.body;
+        const { error } = Validators_1.questionInputValidators.validate(req.body);
+        if (error) {
+            return res.status(400).json({ error: error.details[0].message });
+        }
         // await db.exec('addQuestion',{id,questionTitle,questionDescription,questionTag,userID,tagId});
         // await db.exec('addTag',{tagId,questionTag,tagTitle});
         const pool = yield mssql_1.default.connect(config_1.sqlConfig);
@@ -35,7 +41,7 @@ const addQuestion = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             .input('questionDescription', mssql_1.default.VarChar, questionDescription)
             .input('questionTag', mssql_1.default.VarChar, questionTag)
             .input('userID', mssql_1.default.VarChar, userID)
-            .input('tagID', mssql_1.default.VarChar, tagId)
+            // .input('tagID',mssql.VarChar,tagId)
             .execute('addQuestion');
         return res.status(200).json({ message: "question added successfully" });
     }
@@ -51,14 +57,14 @@ const getAQuestion = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         return res.status(200).json(question);
     }
     catch (error) {
-        res.status(500).json(error.message);
+        return res.status(500).json(error.message);
     }
 });
 exports.getAQuestion = getAQuestion;
 const getAllQuestions = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const questions = (yield db.exec('getAllQuestions')).recordset;
-        res.status(200).json({ questions });
+        return res.status(200).json(questions);
     }
     catch (error) {
         return res.status(500).json(error.message);
@@ -69,22 +75,22 @@ const deleteAQuestion = (req, res) => __awaiter(void 0, void 0, void 0, function
     try {
         const { questionID } = req.params;
         yield db.exec('deleteQuestion', { id: questionID });
-        res.status(201).json({ message: 'message deleted successfully' });
+        return res.status(201).json({ message: 'message deleted successfully' });
     }
     catch (error) {
-        res.status(500).json(error.message);
+        return res.status(500).json(error.message);
     }
 });
 exports.deleteAQuestion = deleteAQuestion;
 const getAQuestionByUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _b;
     try {
-        const userID = (_b = req.info) === null || _b === void 0 ? void 0 : _b.id; ///user must sign in or log in
+        const { userID } = req.params; ///user must sign in or log in
         const question = (yield db.exec('getAQuestionByUserId', { userID })).recordset;
-        res.status(200).json({ question });
+        console.log(question);
+        return res.status(200).json(question);
     }
     catch (error) {
-        res.status(404).json(error.message);
+        return res.status(404).json(error.message);
     }
 });
 exports.getAQuestionByUser = getAQuestionByUser;

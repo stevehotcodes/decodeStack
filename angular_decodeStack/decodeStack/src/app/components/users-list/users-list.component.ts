@@ -1,8 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
+import { UserServicesService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from 'src/app/reducers/users.reducer';
+
+export interface User{
+  dateJoined:string
+  id:string
+  firstName:string
+  lastName:string
+  role:string
+  userName:string
+  github:string
+  isActive:number
+  email:string
+  
+}
+
+
 
 @Component({
   selector: 'app-users-list',
@@ -11,6 +30,43 @@ import { RouterModule } from '@angular/router';
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.css']
 })
-export class UsersListComponent {
+export class UsersListComponent implements OnInit {
+  users!:User[]
+  isAdmin!:boolean
+  id!:string
+
+  constructor(private userSvc:UserServicesService,private  authSvc:AuthService){}
+
+  ngOnInit(): void {
+    
+    this.userSvc.getAllUsers().subscribe(
+      res=>{
+        const currentIndex=1
+        this.users=res
+        this.id=res[currentIndex].id
+        console.log(res)
+      },
+      err=>{
+        console.log(err)
+      }
+    )
+
+   this.isAdmin= this.authSvc.checkAdmin()
+  }
+  userDelete(id:string){
+    this.userSvc.deleteUser(this.id).subscribe(
+      res=>{
+        console.log(res)
+        console.log('user deleted successfully')
+
+      },
+      err=>{
+        console.log(err)
+      }
+    )
+
+  }
+ 
+
 
 }
