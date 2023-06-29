@@ -25,3 +25,26 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+# DecodeStack :Express, NodeJs,MSSQL Backend
+Find the backend files in the express_decodeStack folder
+
+## Developement Server
+Run the `npm run serve` to the backend development server
+
+## Route testing 
+You can the REST API extension for VS Code, Postman , or Insomnia
+
+## Database
+The Database use in this project is the MSSQL(Microsoft SQL Serever)
+
+# DecodeStack:Background Services
+-Includes the cron job that send aan email when a user signs up to the system
+- to run the background service `npm run start`
+
+
+
+
+
+
