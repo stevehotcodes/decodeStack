@@ -4,11 +4,11 @@ CREATE OR ALTER PROCEDURE addQuestion(
 @questionDescription VARCHAR (MAX),
 @questionTag VARCHAR (MAX),
 @userID VARCHAR (255),
-@tagID VARCHAR(255)
+-- @tagID VARCHAR(255)
 )
 AS
 BEGIN
 	INSERT INTO questions (id,questionTitle,questionDescription,questionTag,userID)
-	VALUES (@id,@question_title,@questionDescription,@questionTag,@userID)
+	VALUES (@id,@questionTitle,@questionDescription,@questionTag,@userID)
 
 END

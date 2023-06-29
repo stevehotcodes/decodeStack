@@ -59,3 +59,19 @@ export const downVote =async (req:IRequest,res:Response)=>{
 
     }
 }
+
+export const getUpVotes =async(req:Request,res:Response)=>{
+    try {
+        const{answerID}=req.params
+        const votes:IVotes[]=await (await db.exec('getUpVotes',{answerID})).recordset
+        if(!votes){
+            return res.status(404).json({message:"no upvotes"})
+        }
+        console.log(votes)
+        return res.status(200).json(votes)
+
+    } catch (error:any) {
+        return res.status(500).json({message:error.message})
+        
+    }
+}

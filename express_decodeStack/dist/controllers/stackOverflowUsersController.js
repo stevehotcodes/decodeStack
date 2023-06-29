@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.signIn = exports.getSignedInUser = exports.getOneUser = exports.updateUser = exports.deleteUser = exports.getAllUsers = exports.addUser = void 0;
+exports.signIn = exports.getSignedInUser = exports.getOneUser = exports.getUserByEmail = exports.updateUser = exports.deleteUser = exports.getAllUsers = exports.addUser = void 0;
 const uuid_1 = require("uuid");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const mssql_1 = __importDefault(require("mssql"));
@@ -38,7 +38,7 @@ const addUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         //validate first
         const { error } = Validators_1.registrationSchema.validate(req.body);
         if (error) {
-            return res.status(400).json({ error: error.details[0].message });
+            return res.status(406).json({ error: error.details[0].message });
         }
         const hashedPassword = yield bcrypt_1.default.hash(password, 10);
         // console.log(hashedPassword)
@@ -57,7 +57,7 @@ const addUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         return res.status(201).json({ message: `user${firstName} has been created successfully` });
     }
     catch (error) {
-        return res.status(500).json(error.message);
+        return res.status(406).json({ error: error.message });
     }
 });
 exports.addUser = addUser;
@@ -87,10 +87,17 @@ const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         }
     }
     catch (error) {
-        res.json(error.message);
+        return res.status(500).json(error.message);
     }
 });
 exports.deleteUser = deleteUser;
+// async function getUser(filter_type:TfilterType, filter_value:string) {
+//     let user:IUser =(await db.exec('getUserBy', {filter_type,filter_value})).recordset[0]
+//     if(user){
+//         filterSensitiveUserInfo([user])
+//         return user
+//     }
+// }
 const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
@@ -106,21 +113,50 @@ const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         }
     }
     catch (error) {
-        return res.json(error.message);
+        return res.status(500).json(error.message);
     }
 });
 exports.updateUser = updateUser;
+function getUser(filter_type, filter_value) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let user = (yield db.exec('getStackOverflowUserBy', { filter_type, filter_value })).recordset;
+        console.log(user);
+        if (user) {
+            filterUserInfo(user);
+            return user;
+        }
+        return [];
+    });
+}
+const getUserByEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const filter_type = 'email';
+        const { email } = req.query;
+        let user = yield getUser(filter_type, email);
+        console.log(user);
+        if (user) {
+            return res.status(200).json(user);
+        }
+        return res.status(404).json({ message: `user with such email does not exist ${email}` });
+    }
+    catch (error) {
+        return res.status(500).json(error.message);
+    }
+});
+exports.getUserByEmail = getUserByEmail;
 const getOneUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
         const user = (yield db.exec('getStackOverUserById', { id })).recordset[0];
-        if (!user) {
-            return res.status(404).json({ message: 'user does not exist' });
-        }
+        // if(!user){
+        //     return res.status(404).json({message:'user does not exist'})
+        // }
+        // let fUser=filterUserInfo(user)
+        console.log(user);
         return res.status(200).json(user);
     }
     catch (error) {
-        return res.status(404).json({ message: error.message });
+        return res.status(500).json({ message: error.message });
     }
 });
 exports.getOneUser = getOneUser;
@@ -142,6 +178,11 @@ exports.getSignedInUser = getSignedInUser;
 const signIn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, password } = req.body;
+        //validate the user input values
+        const { error } = Validators_1.signInValidator.validate(req.body);
+        if (error) {
+            return res.status(406).json({ error: error.details[0].message });
+        }
         const user = (yield db.exec('getUserBy', { filter_type: 'email', filter_value: email })).recordset[0];
         if (!user) {
             return res.status(404).json({ message: 'user not found' });
@@ -156,7 +197,7 @@ const signIn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const payload = { id: user.id, role: user.role, name, email: user.email };
         const token = jsonwebtoken_1.default.sign(payload, process.env.SECRET_KEY, { expiresIn: '63600s' });
         // await db.query('UPDATE stackOverflowUsers SET isActive=1')
-        return res.status(200).json({ message: 'Signin successful', email, token });
+        return res.status(200).json({ message: 'Signin successful', email, token, role: user.role });
     }
     catch (error) {
         return res.status(500).json({ error: error.message });

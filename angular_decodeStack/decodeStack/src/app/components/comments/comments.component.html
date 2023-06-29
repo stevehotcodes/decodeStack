@@ -1,46 +1,20 @@
 <app-navigation></app-navigation>
 <div id="container">
-    <div id="answer">
-        <div id="page-header">Comments</div>
-        <div id="description"> 
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
+    <div id="comment">
+        <p><strong>Comments</strong></p>
+        <div id="page-header" *ngIf="comments.length"></div>
+        <div id="description" *ngFor="let comment of comments" > 
+           {{comment.commentDescription}}
         </div>
 
     </div>
-
-    <div id="answer">
-      
-        <div id="description"> 
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
-        </div>
-
-    </div>
-
-    <div id="answer">
-        
-        <div id="description"> 
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
-        </div>
-    
-    </div>
-
-    <div id="answer">
-        <div id="description"> 
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
-        </div>
-
-    </div>
-    
-    <div id="answer">
-           <div id="description"> 
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
-        </div>
-
-    </div>
+ 
+  
     <div id="add-comment-div">
-        <form action="">
-            <input type="text" id="comment-msg">
-            <div id="comment-btn">Add Comment</div>
+        <form [formGroup]="commentForm" (ngSubmit)="onComment()">
+            <input type="text" id="comment-msg" formControlName="commentDescription">
+            
+            <button id="comment-btn" type="submit">Add Comment</button>
         </form>
     </div>
     

@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.downVote = exports.upVote = void 0;
+exports.getUpVotes = exports.downVote = exports.upVote = void 0;
 const uuid_1 = require("uuid");
 const DatabaseHelper_1 = __importDefault(require("../helpers/DatabaseHelper"));
 const db = DatabaseHelper_1.default.getInstance();
@@ -67,3 +67,18 @@ const downVote = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.downVote = downVote;
+const getUpVotes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { answerID } = req.params;
+        const votes = yield (yield db.exec('getUpVotes', { answerID })).recordset;
+        if (!votes) {
+            return res.status(404).json({ message: "no upvotes" });
+        }
+        console.log(votes);
+        return res.status(200).json(votes);
+    }
+    catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+});
+exports.getUpVotes = getUpVotes;

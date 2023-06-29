@@ -11,4 +11,5 @@ userRoutes.patch('/update', authorization_1.accessRequired, stackOverflowUsersCo
 userRoutes.get('/one/:id', authorization_1.accessRequired, stackOverflowUsersController_1.getOneUser);
 userRoutes.post('/signin', stackOverflowUsersController_1.signIn);
 userRoutes.get('/signin-user', authorization_1.accessRequired, stackOverflowUsersController_1.getSignedInUser);
+userRoutes.get('/u', stackOverflowUsersController_1.getUserByEmail);
 exports.default = userRoutes;

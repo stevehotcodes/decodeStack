@@ -3,73 +3,34 @@
     <div id="page-header"> 
         <p>Tags</p>
         <div class="filter">
-            <form id="search-header-form">
-                <input type="text" placeholder="filter" id="query">
+            <div id="search-header-form">
+                <input type="text" placeholder="filter" id="query" [(ngModel)]="filterTag" >
+                
                 <ion-icon name="search-outline" id="search-icon" width="4"></ion-icon>
-            </form>
+            </div>
         </div>
     </div>
-    <div class="tag-cards">
-        <div id="tag-card">
-            <div id="tag-type">Javascript</div>
+    <p>Filtered by:{{filterTag}}</p>
+    <div class="tag-cards" *ngIf="filterTagArray.length; else noques">
+        <div id="tag-card" *ngFor="let q of filterTagArray">
+            <div id="tag-type">{{q.questionTag}}</div>
+            
             <div id="description"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
+                <p>{{q.questionTitle}}</p>
+                {{q.questionDescription}}
             </div>
-            <div id="comments" routerLink="/comments">123 Comments</div>
+            <div id="comments" [routerLink]="['/display-answer',q.id]"> Go to that answers </div>
         </div>
 
-        <div id="tag-card">
-            <div id="tag-type">Javascript</div>
-            <div id="description"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
-            </div>
-            <div id="comments" routerLink="/comments">123 Comments</div>
-        </div>
-
-        <div id="tag-card">
-            <div id="tag-type">Javascript</div>
-            <div id="description"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
-            </div>
-            <div id="comments" routerLink="/comments">123 Comments</div>
-        </div>
-
-        <div id="tag-card">
-            <div id="tag-type">Javascript</div>
-            <div id="description"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
-            </div>
-            <div id="comments" routerLink="/comments">123 Comments</div>
-        </div>
-
-        
-        <div id="tag-card">
-            <div id="tag-type">Javascript</div>
-            <div id="description"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
-            </div>
-            <div id="comments" routerLink="/comments">123 Comments</div>
-        </div>
-        
-        <div id="tag-card">
-            <div id="tag-type">Javascript</div>
-            <div id="description"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
-            </div>
-            <div id="comments" routerLink="/comments">123 Comments</div>
-        </div>
-        
-        <div id="tag-card">
-            <div id="tag-type">Javascript</div>
-            <div id="description"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
-            </div>
-            <div id="comments" routerLink="/comments">123 Comments</div>
-        </div>
 
 
     </div>
-   
+    <ng-template #noques >
+        <label class="not-found">
+            No filtered questions found 
+        </label>
+    </ng-template>
+     
 
     
   

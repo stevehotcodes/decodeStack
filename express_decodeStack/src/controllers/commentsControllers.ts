@@ -2,6 +2,7 @@ import { Request,Response } from "express";
 import {v4 as uid} from'uuid';
 import DatabaseHelper from "../helpers/DatabaseHelper";
 import { IAnswer, ICommment, IRequest } from "../interfaces/types";
+import { commentInputValidators } from "../helpers/Validators";
 
 
 const db=DatabaseHelper.getInstance();
@@ -13,6 +14,10 @@ export const addComment=async (req:IRequest,res:Response)=>{
         const userID=req.info?.id as string      
         const {answerID}=req.params 
         const{commentDescription}=req.body
+        const{error}=commentInputValidators.validate(req.body);
+        if(error){
+            return res.status(406).json({error:error.details[0].message})
+        }
         await db.exec('addComment',{id,userID,answerID,commentDescription});
         return res.status(201).json({message:'comment successfully added'})
         
@@ -27,7 +32,7 @@ export const getAllComments= async (req:Request,res:Response)=>{
         
         const{answerID}=req.params
         const comments:ICommment[]=(await db.exec('getAllComments',{answerID})).recordset
-        return res.status(200).json({comments})
+        return res.status(200).json(comments)
     } 
     catch (error:any) {
         return res.status(500).json(error.message)

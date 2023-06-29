@@ -9,17 +9,19 @@ export interface IUser{
     password:string
     role:string
     isDeleted:number;
-    avatar:string
+    dateJoined:string
     
 }
 
 export interface IQuestion{
     id:string
-    questionitle:string
+    questionTitle:string
     questionDescription:string
     questionTag:string
     isDeleted:number
     isAnswered:number
+    
+    
 }
 
 export interface IAnswer {
@@ -57,3 +59,10 @@ export interface IRequest extends Request{
     info?:IDecodedData
 }
 
+export interface Itags{
+    id:string
+    tagTitle:string
+    questionID:string
+}
+
+export type TfilterType = 'id' | 'email'

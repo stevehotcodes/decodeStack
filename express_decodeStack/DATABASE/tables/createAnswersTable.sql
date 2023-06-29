@@ -1,7 +1,7 @@
 CREATE TABLE answers (
 id VARCHAR(255) PRIMARY KEY,
 answerDescription VARCHAR (MAX)  NOT NULL,
-isPrefered INT DEFAULT 0,
+isPrefered INT DEFAULT 0 NOT NULL,
 userID VARCHAR (255) FOREIGN KEY REFERENCES stackOverflowUsers(id),
 questionID VARCHAR(255) FOREIGN KEY REFERENCES questions(id)
 );

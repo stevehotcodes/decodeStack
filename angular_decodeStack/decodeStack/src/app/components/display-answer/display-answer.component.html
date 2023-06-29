@@ -1,103 +1,29 @@
 <app-navigation></app-navigation>
-<div id="container">
-    <div id="page-header"> Answers</div>
-    <div id="question">Lorem, ipsum dolor sit amet consec?</div>
-    <div class="votes-answers">
+<div id="container" *ngIf="question">
+    <div id="page-header"> {{question.questionTitle}}:Answers</div>
+    <div id="question" *ngIf="answers"></div>
+    <div class="votes-answers" *ngFor="let answer of answers" >
         <div id="votes-action">
-            <ion-icon name="caret-up-outline"></ion-icon>
-            <div>7 votes</div>
-            <ion-icon name="caret-down-outline"></ion-icon>
+            <ion-icon name="caret-up-outline" (click)="upVote(answer.id)"></ion-icon>
+            <div>{{votes.length}}</div>
+            <ion-icon name="caret-down-outline"(click)="downVote(answer.id)"></ion-icon>
         </div>
 
-        <div id="answer">
+        <div id="answer" >
             <div id="description"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
+                {{answer.answerDescription}}
             </div>
-            <div id="comments" routerLink="/comments">123 Comments</div>
+            <div id="comments" [routerLink]='["/comments",answer.id]'>Comments</div>
         </div>
     </div>
 
-    <div class="votes-answers">
-        <div id="votes-action">
-            <ion-icon name="caret-up-outline"></ion-icon>
-            <div>7 votes</div>
-            <ion-icon name="caret-down-outline"></ion-icon>
-        </div>
+   
+  <hr>
+    <div id="page-title" style="font-weight:bolder"><p>{{question.questionTitle}}</p></div>
+    <div ><p style="font-style:italics">{{question.questionDescription}}</p></div>
 
-        <div id="answer">
-            <div id="description"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
-            </div>
-            <div id="comments" routerLink="/comments">123 Comments</div>
-        </div>
-    </div>
-
-    <div class="votes-answers">
-        <div id="votes-action">
-            <ion-icon name="caret-up-outline"></ion-icon>
-            <div>7 votes</div>
-            <ion-icon name="caret-down-outline"></ion-icon>
-        </div>
-
-        <div id="answer">
-            <div id="description"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
-            </div>
-            <div id="comments" routerLink="/comments">123 Comments</div>
-        </div>
-        
-
-    </div>
-
-    <div class="votes-answers">
-        <div id="votes-action">
-            <ion-icon name="caret-up-outline"></ion-icon>
-            <div>7 votes</div>
-            <ion-icon name="caret-down-outline"></ion-icon>
-        </div>
-
-        <div id="answer">
-            <div id="description"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
-            </div>
-            <div id="comments" routerLink="/comments">123 Comments</div>
-        </div>
-        
-
-    </div>
-    <div class="votes-answers">
-        <div id="votes-action">
-            <ion-icon name="caret-up-outline"></ion-icon>
-            <div>7 votes</div>
-            <ion-icon name="caret-down-outline"></ion-icon>
-        </div>
-
-        <div id="answer">
-            <div id="description"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
-            </div>
-            <div id="comments" routerLink="/comments">123 Comments</div>
-        </div>
-        
-
-    </div>
     
-    <div class="votes-answers">
-        <div id="votes-action">
-            <ion-icon name="caret-up-outline"></ion-icon>
-            <div>7 votes</div>
-            <ion-icon name="caret-down-outline"></ion-icon>
-        </div>
-
-        <div id="answer">
-            <div id="description"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus ut animi facilis blanditiis officiis cumque minus sapiente quidem fugit, nihil quae? Dicta qui eum voluptates fuga perferendis nihil facilis enim.
-            </div>
-            <div id="comments" routerLink="/comments">123 Comments</div>
-        </div>
-         
-        
-    </div>
+    
     <app-post-answer></app-post-answer>
    
 </div>

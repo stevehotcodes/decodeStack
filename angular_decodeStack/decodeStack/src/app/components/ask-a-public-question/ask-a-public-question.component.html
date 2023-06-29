@@ -1,26 +1,26 @@
 <app-navigation></app-navigation>
 <div id="container">
     <div id="page-title"> <p>Ask A Public Question</p></div>
-    <form id="question-form" [formGroup]="questionForm">
+    <form id="question-form" [formGroup]="questionForm" (ngSubmit)="onSubmit()">
         <div class="question-title" class="question-inputs">
             <label for="" >Title</label>
             <input type="text" id="question-title" formControlName="questionTitle">
-            <div *ngIf="questionTitle.errors&&questionTitle.touched">question title cannot be empty</div>
+            <div *ngIf="questionTitle.errors&&questionTitle.touched" style="color:red">question title cannot be empty</div>
         </div>
 
         <div class="question-description" class="question-inputs">
             <label for="" >Description</label>
-            <input type="text" id="description" formControlName="description">
-            <div *ngIf="description.hasError('required')&& description.touched">Must provide description of your question</div>
+            <input type="text" id="description" formControlName="questionDescription">
+            <div *ngIf="questionDescription.errors&& questionDescription.touched" style="color:red">Must provide description of your question</div>
         </div>
 
         <div class="question-tag" class="question-inputs">
             <label for="" >Tag</label>
-            <input type="text" id="tag" formControlName="tags">
-            <div *ngIf="tag.hasError('required')&& tag.touched">Tag cannot be empty</div>
+            <input type="text" id="tag" formControlName="questionTag">
+            <div *ngIf="questionTag.errors&& questionTag.touched" style="color:red">Tag cannot be empty</div>
         </div>
 
-        <button id="post-question-btn">Post Question</button>
+        <button id="post-question-btn" type="submit">Post Question</button>
     </form>
    
 </div>

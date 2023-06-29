@@ -11,6 +11,7 @@
   --default-box-shadow: 0 0 5px rgba(0,0,0,0.2);
   --main-bg-color: #F5F5F5;
   --comments-font-color:maroon;
+  --dark-gray-color:#868484;
 }
 
 *{
@@ -89,6 +90,7 @@ app-navigation{
     /* border-right: 2px solid #fefefe; */
     flex:.2;   
     padding: 2px;
+    flex-grow: .2;
 
 }
 
@@ -97,8 +99,51 @@ app-user-profile,app-questions,app-ask-a-public-question,app-post-answer,app-tag
         display:flex;
         flex-wrap:wrap;
 }
+app-not-found{
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    color:red;
+    flex-direction: column;
+}
+#flash-messages {
+    position: fixed;
+    z-index: 1;
+    top: 5svh;
+    right: 3svw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    width: min(400px, 60svw);
+    color: white;
+}
+
+
+app-flash-message {
+    color: white;
+    padding: 0.2rem 0.5rem;
+    font-size: large;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.9;
+    border-radius: 5px;
+}
+
+.error {
+    background-color: rgba(253,0,0,0.5);
+}
+
+.success {
+    background-color: green;
+}
+
+.info {
+    background-color: gray;
+}
     
-@media (max-width:500px){
+@media (max-width:502px){
         app-navigation{
             flex-direction: row;
             flex-wrap:wrap;
@@ -106,6 +151,7 @@ app-user-profile,app-questions,app-ask-a-public-question,app-post-answer,app-tag
             gap:0;
             flex-grow: .1;
             width: min(100svw,500px);
+            border-bottom:2px solid gray;
         }
         app-user-profile,app-questions,app-ask-a-public-question,app-post-answer,app-tags,app-display-answer,app-comments,app-users-list,app-not-found{
             flex-direction: column;
