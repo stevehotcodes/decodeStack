@@ -17,7 +17,6 @@ export class UserGuard implements CanActivate{
         try{
             if(this.authSvc.getUserSignInToken()){
 
-                // this.router.navigate(['/questions'])
                 return true
                 
             }

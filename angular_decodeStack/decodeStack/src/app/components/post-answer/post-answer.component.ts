@@ -48,8 +48,9 @@ export class PostAnswerComponent implements OnInit {
     this.answerSvc.postAnswer(this.id,this.answerForm.value).subscribe(
       res=>{
         console.log(res)
-        // this.router.navigate(['./display-answer/:questionID'])
+        this.router.navigate(['/display-answer',this.id])
         this.answerForm.reset()
+        window.location.reload()
       },
       err=>{
         console.log(err)

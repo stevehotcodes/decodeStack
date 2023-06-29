@@ -1,8 +1,13 @@
 #user-profile-container{
     flex:.7;
-    border: 2px solid gray;
+ 
     flex-wrap: wrap;
     height: 100%;
+    background-color: #fff;
+    margin-top:.5em;
+
+    flex-grow:.7;
+    
 
 
 }
@@ -12,6 +17,7 @@
     align-items: center;
     gap:10rem;
     flex-wrap: wrap;
+    justify-content: flex-start;
 
 }
 
@@ -19,10 +25,10 @@
     box-sizing: border-box;
     border-radius: 50%;
     border:2px solid black;
-    width:150px;
-    height:150px;
+    width:100px;
+    height:100px;
     display:flex;
-    background-color:green;
+
 }
 #actions{
     display: flex;
@@ -80,27 +86,36 @@
     border: 2px solid #ff1111;
 }
 #stats{
-    font-size: x-large;
+    font-size: large;
     font-weight: bolder;
+ 
 }
 
 #stats-votes-questions{
     display:flex;
     flex-direction: column;
     box-shadow:var(--default-box-shadow);
-    /* justify-content:center; */
+    justify-content:space;
     align-items: center;
-    font-size: large;
+   
     width: min(60svw, 300px);
-    height: min(60svh, 300px);
+    height: min(60svh, 100px);
+    
+   
 }
 
 #username-email{
     box-shadow:var(--default-box-shadow);
     width: min(60svw, 300px);
-    height: min(60svh, 300px);
+    height: min(60svh, 100px);
     display: flex;
+    box-sizing: border-box;
     flex-direction:column;
+
+}
+#bio{
+    font-size: large;
+    font-weight: bolder;
 }
 
 .details-stats{
@@ -108,13 +123,28 @@
     align-items: center;
     flex-wrap: wrap;
     gap:2rem;
-    justify-content: center;
+    justify-content: space-evenly;
+    margin-bottom: .5rem;
    
+}
+.question-divs{
+    background-color: #fff;
+    border-radius:20px;
+    box-shadow:2px 2px 2px #f5ffef;
+    margin:1rem;
 }
 #questions{
     display:flex;
     flex-direction:column;
-    background-color: aqua;
+    background-color: #fff;
+    margin-top:1rem ;
+    border-top: 2px solid gray;
+    flex-wrap: wrap;
+}
+
+h3{
+    text-align: center;
+   
 }
 
 @media (max-width:496px) {

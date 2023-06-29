@@ -27,7 +27,7 @@ export class UserServicesService {
         type:'success',
         message:res.message
       })
-      // this.router.navigate(['/signin'])
+
     },
     (error:any)=>{
       switch(error.status){
@@ -88,7 +88,7 @@ export class UserServicesService {
   deleteUser(id:string):Observable<any>{
     const headers=new HttpHeaders().set('token',this.token as string);
     return this.http.delete<any>('http://localhost:4000/users/delete/' + id, {headers:headers})
-    // return this .http.delete<any>
+  
 
   }
 

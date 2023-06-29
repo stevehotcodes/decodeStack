@@ -5,8 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { UserServicesService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { StoreModule } from '@ngrx/store';
-import { userReducer } from 'src/app/reducers/users.reducer';
+// import { StoreModule } from '@ngrx/store';
+// import { userReducer } from 'src/app/store/reducers/users.reducerusers.reducer';
 
 export interface User{
   dateJoined:string
@@ -31,7 +31,7 @@ export interface User{
   styleUrls: ['./users-list.component.css']
 })
 export class UsersListComponent implements OnInit {
-  users!:User[]
+  users:User[] =[]
   isAdmin!:boolean
   id!:string
 
@@ -39,17 +39,7 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.userSvc.getAllUsers().subscribe(
-      res=>{
-        const currentIndex=1
-        this.users=res
-        this.id=res[currentIndex].id
-        console.log(res)
-      },
-      err=>{
-        console.log(err)
-      }
-    )
+  this.fetchUsers()
 
    this.isAdmin= this.authSvc.checkAdmin()
   }
@@ -66,7 +56,20 @@ export class UsersListComponent implements OnInit {
     )
 
   }
- 
+  fetchUsers(){
+    this.userSvc.getAllUsers().subscribe(
+      res=>{
+        const currentIndex=0
+        this.users=res
+        this.id=res[currentIndex].id
+       
+      },
+      err=>{
+        console.log(err)
+      }
+    )
+  }
+
 
 
 }

@@ -1,6 +1,6 @@
 export interface IflashMessage {
     type: 'error' | 'success' | 'info'
-    message:string
+    message:string                      //flash / error handling
 }
 
 
@@ -15,14 +15,14 @@ export interface newUserData{
   }
 
 export interface signInUserData{
-    email:string
+    email:string                        //for sign in purposes
     token:string
     role: string
 }
 
 export interface IuserSigninCredential{
     email:string
-    password:string
+    password:string                            //required on sign in
 }
 
 export interface IQuestion{
@@ -54,4 +54,8 @@ export class QuestionBody{
 
 export class AnswerBody{
     answerDescription!:string
+}
+
+export class CommentBody{
+    commentDescription!:string
 }

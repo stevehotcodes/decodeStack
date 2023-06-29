@@ -1,7 +1,8 @@
 <app-navigation></app-navigation>
 <div id="container">
     <div id="comment">
-        <div id="page-header" *ngIf="comments.length" >Comments</div>
+        <p><strong>Comments</strong></p>
+        <div id="page-header" *ngIf="comments.length"></div>
         <div id="description" *ngFor="let comment of comments" > 
            {{comment.commentDescription}}
         </div>

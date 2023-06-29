@@ -28,9 +28,7 @@ private baseUrl:string
 
     const signinedUser = email && token?{email,token} : null
     
-    // return new Observable(observer=>{
-    //   observer.next(signinedUser)
-    // })
+
    return signinedUser
   
   }

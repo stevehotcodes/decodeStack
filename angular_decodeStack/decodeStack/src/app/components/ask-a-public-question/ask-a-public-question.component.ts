@@ -60,6 +60,9 @@ export class AskAPublicQuestionComponent implements OnInit{
   get  questionTag(){
     return this.questionForm.controls['questionTag']
   }
+  
+
+  
 
 
 }

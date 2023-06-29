@@ -25,7 +25,9 @@ import { UserServicesService } from './services/user.service';
 import { FlashMessagesComponent } from './components/flash-messages/flash-messages.component';
 import { QuestionsService } from './services/questions.service';
 import { StoreModule } from '@ngrx/store';
-import { userReducer } from './reducers/users.reducer';
+// import { userReducer } from './store/reducers/users.reducerusers.reducer';
+import { userReducer } from './store/reducers/users.reducer';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -52,7 +54,8 @@ import { userReducer } from './reducers/users.reducer';
     IonicModule.forRoot(),
     FormsModule,
     HttpClientModule,
-    StoreModule.forRoot({userReducer}, {})
+    StoreModule.forRoot({userReducer}, {}),
+    EffectsModule.forRoot([])
    
    
   ],

@@ -4,22 +4,22 @@
     <div id="question" *ngIf="answers"></div>
     <div class="votes-answers" *ngFor="let answer of answers" >
         <div id="votes-action">
-            <ion-icon name="caret-up-outline"></ion-icon>
-            <div>7 votes</div>
-            <ion-icon name="caret-down-outline"></ion-icon>
+            <ion-icon name="caret-up-outline" (click)="upVote(answer.id)"></ion-icon>
+            <div>{{votes.length}}</div>
+            <ion-icon name="caret-down-outline"(click)="downVote(answer.id)"></ion-icon>
         </div>
 
         <div id="answer" >
             <div id="description"> 
                 {{answer.answerDescription}}
             </div>
-            <div id="comments" [routerLink]='["/comments",answer.id]'>123 Comments</div>
+            <div id="comments" [routerLink]='["/comments",answer.id]'>Comments</div>
         </div>
     </div>
 
    
   <hr>
-    <div id="page-title" style="font-weight:bolder"> <p>{{question.questionTitle}}</p></div>
+    <div id="page-title" style="font-weight:bolder"><p>{{question.questionTitle}}</p></div>
     <div ><p style="font-style:italics">{{question.questionDescription}}</p></div>
 
     

@@ -14,15 +14,14 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-// signOut() {
-// throw new Error('Method not implemented.');
-// }
+
   title:string="Header"
 loggedUser!: boolean;
 
 constructor(private userSvc:UserServicesService, private authSvc:AuthService){
    
-         this.loggedUser=this.authSvc.getUserSignInToken() 
+   this.loggedUser=this.authSvc.getUserSignInToken() 
+         
  }
  
  signOut(){

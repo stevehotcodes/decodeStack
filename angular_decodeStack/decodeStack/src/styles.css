@@ -11,6 +11,7 @@
   --default-box-shadow: 0 0 5px rgba(0,0,0,0.2);
   --main-bg-color: #F5F5F5;
   --comments-font-color:maroon;
+  --dark-gray-color:#868484;
 }
 
 *{
@@ -89,6 +90,7 @@ app-navigation{
     /* border-right: 2px solid #fefefe; */
     flex:.2;   
     padding: 2px;
+    flex-grow: .2;
 
 }
 
@@ -141,7 +143,7 @@ app-flash-message {
     background-color: gray;
 }
     
-@media (max-width:500px){
+@media (max-width:502px){
         app-navigation{
             flex-direction: row;
             flex-wrap:wrap;
@@ -149,6 +151,7 @@ app-flash-message {
             gap:0;
             flex-grow: .1;
             width: min(100svw,500px);
+            border-bottom:2px solid gray;
         }
         app-user-profile,app-questions,app-ask-a-public-question,app-post-answer,app-tags,app-display-answer,app-comments,app-users-list,app-not-found{
             flex-direction: column;

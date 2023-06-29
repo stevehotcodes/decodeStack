@@ -20,21 +20,13 @@ private token:string | null | undefined
    //get the token
     this.token=this.authSvc.getUserSignIn()?.token
     
-    // this.authSvc.getUserSignIn().subscribe(
-    //   res=>{
-    //      this.token=res.token //checking whether the token exist
-    //      console.log(this.token)
-    //   },
-    //   err=>{
-    //     console.log('no token assigned to the user',err)
-    //   }
-    // )
+   
     
   }
   
-getAllQuestions():Observable<any[]>{
+getAllQuestions():Observable<any>{
   const headers = new HttpHeaders().set('token', this.token as string)
-   return this.http.get<IQuestion[]>('http://localhost:4000/questions/all',{headers})
+   return this.http.get<IQuestion[]>(`http://localhost:4000/questions/all`,{headers:headers})
 } 
 getQuestion(id:string):Observable<IQuestion>{
   const headers= new HttpHeaders().set('token',this.token as string)
@@ -55,7 +47,8 @@ getQuestionByUser(id:string):Observable<any>{
 }
 deleteQuestion(id:string):Observable<any>{
   const headers=new HttpHeaders().set('token',this.token as string)
-  return this.http.patch<any>('http://localhost:4000/questions/delete/'+ id,{headers:headers})
+  console.log(headers)
+  return this.http.delete<any>('http://localhost:4000/questions/delete/'+ id,{headers})
 }
 
 

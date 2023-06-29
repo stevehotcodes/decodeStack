@@ -12,12 +12,12 @@
 
 #page-header p{
     font-weight: bolder;
-    font-size: larger;
+    font-size: 1.5rem;
     text-align: center;
 }
 .user-cards{
     display: flex;
-    border: .1px transparent #fefeff;
+    border: .1px solid #f4f4f4;
     flex-wrap: wrap;
     height: 100%;
     margin: 0.1rem;
@@ -25,11 +25,13 @@
     gap:1rem;
     justify-content: center;
     align-items: center;
+    border-radius:  20px ;
+    
 }
 
 .user-card{
     display: flex;
-    width:min(100svw, 300px);
+    width:min(100svw, 450px);
     height: min(20svh, 55px);
     justify-content: space-between;
     align-items: center;
@@ -37,6 +39,8 @@
     padding: .5rem;
     background-color: #fefeff;
     border-radius: 15px;
+    font-size: 1.5rem;
+    box-shadow: 2px 2px 2px  #363535;
    
 }
 

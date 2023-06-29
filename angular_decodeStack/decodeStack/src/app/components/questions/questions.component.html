@@ -1,13 +1,13 @@
 <app-navigation></app-navigation>
 <div id="container" >
     <div id="questions-title-ask-button">
-        <div id="all-questions">All Questions</div>
+        <div id="all-questions"><p>All Questions</p></div>
         <div id="ask-button" routerLink="/ask-a-question">Ask Question</div>
     </div>
 
     <div class="question-divs" *ngFor="let question of questions">
         <div id="votes-answer">
-            <!-- <div id="votes">2 votes</div> -->
+           
             <div id="answer">{{answers.length}} answers</div>
         </div>
         
@@ -19,7 +19,11 @@
             <p>Asked by:Stephen Ondieki</p>
             <p>Date :{{question.dateAsked | date}} </p>
         </div>
-        <ion-icon name="trash" id="delete" *ngIf="isAdmin"   (click)="questionDelete(question.id)"></ion-icon>
+        <ion-icon name="trash" id="delete" *ngIf="isAdmin"   (click)="questionDelete()"></ion-icon>
+        <div>
+            <!-- <button type="submit" >Edit Question</button> -->
+            
+        </div>
     </div>
 
    
