@@ -73,9 +73,10 @@ const getAllQuestions = (req, res) => __awaiter(void 0, void 0, void 0, function
 exports.getAllQuestions = getAllQuestions;
 const deleteAQuestion = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { questionID } = req.params;
-        yield db.exec('deleteQuestion', { id: questionID });
-        return res.status(201).json({ message: 'message deleted successfully' });
+        const { id } = req.params;
+        yield db.exec('deleteQuestion', { id });
+        console.log('deleted successfully');
+        return res.status(201).json({ message: 'question deleted successfully' });
     }
     catch (error) {
         return res.status(500).json(error.message);

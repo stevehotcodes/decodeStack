@@ -9,6 +9,7 @@ function verifyToken(req:IRequest,res:Response,rights: false |'admin'=false){
     try{
         const token = req.headers['token'] as string
         // let message ='Unauthorized'
+        
         if(!token)
         {
             return res.status(401).json({message:'Unauthorized'})
@@ -19,6 +20,7 @@ function verifyToken(req:IRequest,res:Response,rights: false |'admin'=false){
         if(rights && decodedData.role!==rights){
             return res.status(401).json({warning:"No you are not allowed do this operation"})
         }
+        
         
 
     }
@@ -38,8 +40,11 @@ export const accessRequired=(req:IRequest,res:Response,next:NextFunction)=>{
 
 export const adminPrivileges=(req:IRequest,res:Response,next:NextFunction)=>{
     const error =verifyToken(req,res,'admin');
+    
     if(error){
+      
         return error
+       
     }
     next ()
 }

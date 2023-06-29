@@ -72,10 +72,12 @@ export const getAllQuestions =async(req:Request, res:Response)=>{
 export const deleteAQuestion=async(req:IRequest, res:Response)=>{
     try{
 
-        const{questionID}=req.params;
-        await db.exec('deleteQuestion',{id:questionID})
-    
-       return  res.status(201).json({message:'message deleted successfully'});
+        const{id}=req.params;
+        await db.exec('deleteQuestion',{id})
+        console.log('deleted successfully')
+        
+       return  res.status(201).json({message:'question deleted successfully'});
+
 
     }
     catch(error:any){
@@ -84,14 +86,15 @@ export const deleteAQuestion=async(req:IRequest, res:Response)=>{
 }
 
 export const getAQuestionByUser=async(req:IRequest, res:Response)=>{
-    try{
+    try
+    {
         const {userID}=req.params ///user must sign in or log in
         const question:IQuestion[]=(await db.exec('getAQuestionByUserId',{userID})).recordset
         console.log(question)
-       return res.status(200).json(question)
+        return res.status(200).json(question)
     }
+
     catch(error:any){
        return  res.status(404).json(error.message)
-
     }
 }

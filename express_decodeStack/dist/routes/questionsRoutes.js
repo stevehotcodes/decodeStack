@@ -8,5 +8,5 @@ questionRoutes.post('/askquestion', authorization_1.accessRequired, questionsCon
 questionRoutes.get('/one/:id', authorization_1.accessRequired, questionsControllers_1.getAQuestion);
 questionRoutes.get('/all', authorization_1.accessRequired, questionsControllers_1.getAllQuestions);
 questionRoutes.get('/user/:userID', authorization_1.accessRequired, questionsControllers_1.getAQuestionByUser);
-questionRoutes.patch('/delete/:id', authorization_1.adminPrivileges, questionsControllers_1.deleteAQuestion);
+questionRoutes.delete('/delete/:id', authorization_1.adminPrivileges, questionsControllers_1.deleteAQuestion);
 exports.default = questionRoutes;

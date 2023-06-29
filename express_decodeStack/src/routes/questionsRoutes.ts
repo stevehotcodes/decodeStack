@@ -9,6 +9,6 @@ questionRoutes.post('/askquestion',accessRequired,addQuestion)
 questionRoutes.get('/one/:id',accessRequired,getAQuestion)
 questionRoutes.get('/all',accessRequired,getAllQuestions)
 questionRoutes.get('/user/:userID',accessRequired,getAQuestionByUser)
-questionRoutes.patch('/delete/:id',adminPrivileges,deleteAQuestion)
+questionRoutes.delete('/delete/:id',adminPrivileges,deleteAQuestion)
 
 export default questionRoutes
