@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserServicesService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
 // import { StoreModule } from '@ngrx/store';
@@ -35,11 +35,14 @@ export class UsersListComponent implements OnInit {
   isAdmin!:boolean
   id!:string
 
-  constructor(private userSvc:UserServicesService,private  authSvc:AuthService){}
+  constructor(private userSvc:UserServicesService,private  authSvc:AuthService, private route:ActivatedRoute){
+    // this.id=this.route.snapshot.params['userID'];
+    this.fetchUsers()
+  }
 
   ngOnInit(): void {
     
-  this.fetchUsers()
+ 
 
    this.isAdmin= this.authSvc.checkAdmin()
   }
@@ -58,14 +61,14 @@ export class UsersListComponent implements OnInit {
   }
   fetchUsers(){
     this.userSvc.getAllUsers().subscribe(
-      res=>{
-        const currentIndex=0
+      (res)=>{
         this.users=res
-        this.id=res[currentIndex].id
+        // const currentIndex=0
+        // this.id=res[currentIndex].id
        
       },
-      err=>{
-        console.log(err)
+      (error)=>{
+        console.log(error)
       }
     )
   }

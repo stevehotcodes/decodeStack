@@ -75,7 +75,7 @@ export class UserServicesService {
 
   getAllUsers():Observable<any>{
     const headers = new HttpHeaders().set('token',this.token as string)
-    return this.http.get<any[]>(`http://localhost:4000/users/all`,{headers});
+    return this.http.get<IUser[]>(`http://localhost:4000/users/all`,{headers});
   }
   getAUser(id:string):Observable<any>{
     const headers =new HttpHeaders().set('token',this.token as string)

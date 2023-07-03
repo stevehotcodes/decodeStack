@@ -13,6 +13,8 @@ import { AuthService } from './auth.service';
 export class QuestionsService {
 private baseUrl:string
 private token:string | null | undefined
+allUrl:string=`http://localhost:4000/questions/all`
+
 
   constructor(private http:HttpClient,private authSvc:AuthService) {
     this.baseUrl=`${environment.apiUrl}questions/`
@@ -24,10 +26,11 @@ private token:string | null | undefined
     
   }
   
-getAllQuestions():Observable<any>{
+getAllQuestions(page:number):Observable<any>{
   const headers = new HttpHeaders().set('token', this.token as string)
-   return this.http.get<IQuestion[]>(`http://localhost:4000/questions/all`,{headers:headers})
+   return this.http.get(this.allUrl+ '?page='+page, {headers:headers})
 } 
+
 getQuestion(id:string):Observable<IQuestion>{
   const headers= new HttpHeaders().set('token',this.token as string)
   return this.http.get<IQuestion>(`http://localhost:4000/questions/one/` + id,{headers:headers});
@@ -38,6 +41,7 @@ askQuestion(newQuestion:QuestionBody):Observable<any>{
 
   console.log( newQuestion)
   return this.http.post<IQuestion>('http://localhost:4000/questions/askquestion',newQuestion,{headers:headers})
+  window.location.reload()
 
 }
 getQuestionByUser(id:string):Observable<any>{

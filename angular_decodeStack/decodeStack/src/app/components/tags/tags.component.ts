@@ -19,7 +19,8 @@ export class TagsComponent implements OnInit {
   questions:IQuestion[]=[];
   _filterTag:string="" //watches for user nputs
   filterTagArray:IQuestion[]=[]
-
+      pagination:number=1
+    allQuestions:number=0
    
 
   constructor(public questionSvc:QuestionsService){}
@@ -30,7 +31,7 @@ export class TagsComponent implements OnInit {
 
 
   fetchQuestions(){
-    this.questionSvc.getAllQuestions().subscribe(
+    this.questionSvc.getAllQuestions(this.pagination).subscribe(
       (data)=>{
         this.questions=data;
         console.log(this.questions)
