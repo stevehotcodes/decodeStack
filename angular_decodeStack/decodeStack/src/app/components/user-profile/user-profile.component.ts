@@ -17,8 +17,7 @@ export interface IUser{
   dateJoined:string
   role:string
   email:string
-  isDeleted:number
-  isActive:number
+  
 }
 @Component({
   selector: 'app-user-profile',

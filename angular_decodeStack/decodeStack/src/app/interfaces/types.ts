@@ -2,6 +2,18 @@ export interface IflashMessage {
     type: 'error' | 'success' | 'info'
     message:string                      //flash / error handling
 }
+export interface fetchedUser{
+    id:string
+    firstName:string
+    lastName:string
+    username:string
+    email:string
+    dateJoined:string
+    isActive:number
+    github:string
+    role:string
+
+}
 
 
 export interface newUserData{
@@ -43,6 +55,7 @@ export interface IAnswer {
     answerDescription:string
     isPrefered:number
     userID:string
+    voteCount:number
 
 }
 

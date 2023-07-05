@@ -28,6 +28,7 @@ import { StoreModule } from '@ngrx/store';
 // import { userReducer } from './store/reducers/users.reducerusers.reducer';
 import { userReducer } from './store/reducers/users.reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { EffectsModule } from '@ngrx/effects';
     FormsModule,
     HttpClientModule,
     StoreModule.forRoot({userReducer}, {}),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    NgxPaginationModule
    
    
   ],

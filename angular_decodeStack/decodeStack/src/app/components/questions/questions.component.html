@@ -5,7 +5,10 @@
         <div id="ask-button" routerLink="/ask-a-question">Ask Question</div>
     </div>
 
-    <div class="question-divs" *ngFor="let question of questions">
+    <div class="question-divs" *ngFor="let question of questions | paginate:{
+        itemsPerPage:3, 
+        currentPage:pagination,
+        totalItems:allQuestions}">
         <div id="votes-answer">
            
             <div id="answer">{{answers.length}} answers</div>
@@ -25,7 +28,9 @@
             
         </div>
     </div>
-
+    <div  class="d-flex justify-content-center">
+        <pagination-controls (pageChange)="renderPage($event)"></pagination-controls>
+    </div>
    
     
     
