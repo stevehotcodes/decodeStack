@@ -5,7 +5,7 @@
     <div class="votes-answers" *ngFor="let answer of answers" >
         <div id="votes-action">
             <ion-icon name="caret-up-outline" (click)="upVote(answer.id)"></ion-icon>
-            <div>{{votes.length}}</div>
+            <div>{{answer.voteCount}}</div>
             <ion-icon name="caret-down-outline"(click)="downVote(answer.id)"></ion-icon>
         </div>
 

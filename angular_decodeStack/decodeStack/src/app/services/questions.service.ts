@@ -22,8 +22,6 @@ allUrl:string=`http://localhost:4000/questions/all`
    //get the token
     this.token=this.authSvc.getUserSignIn()?.token
     
-   
-    
   }
   
 getAllQuestions(page:number):Observable<any>{

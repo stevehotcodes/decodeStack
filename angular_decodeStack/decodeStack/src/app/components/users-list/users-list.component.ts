@@ -5,6 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserServicesService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
+// import { IUser } from '../user-profile/user-profile.component';
+import { fetchedUser } from 'src/app/interfaces/types';
 // import { StoreModule } from '@ngrx/store';
 // import { userReducer } from 'src/app/store/reducers/users.reducerusers.reducer';
 
@@ -31,7 +33,7 @@ export interface User{
   styleUrls: ['./users-list.component.css']
 })
 export class UsersListComponent implements OnInit {
-  users:User[] =[]
+  users:fetchedUser[]=[]
   isAdmin!:boolean
   id!:string
 
@@ -61,14 +63,14 @@ export class UsersListComponent implements OnInit {
   }
   fetchUsers(){
     this.userSvc.getAllUsers().subscribe(
-      (res)=>{
+      res=>{
         this.users=res
         // const currentIndex=0
         // this.id=res[currentIndex].id
        
       },
-      (error)=>{
-        console.log(error)
+      err=>{
+        console.log(err)
       }
     )
   }

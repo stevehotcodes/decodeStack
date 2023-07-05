@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment.production';
 import { Observable } from 'rxjs';
 import { FlashyMessagesService } from './flashy-messages.service';
 import { Router } from '@angular/router';
-import { IuserSigninCredential, newUserData, signInUserData } from '../interfaces/types';
+import { IuserSigninCredential, fetchedUser, newUserData, signInUserData } from '../interfaces/types';
 import { AuthService } from './auth.service';
 import { IUser } from '../components/user-profile/user-profile.component';
 @Injectable({
@@ -73,9 +73,9 @@ export class UserServicesService {
     
   }
 
-  getAllUsers():Observable<any>{
+  getAllUsers():Observable<any[]>{
     const headers = new HttpHeaders().set('token',this.token as string)
-    return this.http.get<IUser[]>(`http://localhost:4000/users/all`,{headers});
+    return this.http.get<fetchedUser[]>(`http://localhost:4000/users/all`,{headers});
   }
   getAUser(id:string):Observable<any>{
     const headers =new HttpHeaders().set('token',this.token as string)
